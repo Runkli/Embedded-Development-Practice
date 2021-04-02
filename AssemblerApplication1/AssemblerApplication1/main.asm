@@ -35,12 +35,13 @@
 	ldi r19, zeros	; water level	5 (0x5) <= W <= 250 (0xFA)
 	ldi r20, zeros	; zero constant as register
 	
-	out ddrg, 0x0F
+	ldi r21, 0xF0	; for input/output config of ddrg
+	sts ddrg, r21
 	; pin a LED
 buttonwait:	; Button wait routine	
 	ldi r16, zeros	; overwrite default state to off
-	out r16, portg		
-	in r16, ping	; read button pin a into register 0
+	sts portg, r21		
+	lds r16, ping	; read button pin a into register 0
 	cpi r16, 0xFF	; button press means all 1s
 	brne buttonwait	; jump and wait for input
 ; If button is pressed
@@ -82,10 +83,10 @@ levelRange:
 	jmp exit
 exit:
 	; output to io
-	out portg, r16 ; acknowledge led output
+	sts portg, r16 ; acknowledge led output
 	out portd, r17
 	out porte, r18
-	out portf, r19
+	sts portf, r19
 	; output to memory
 	st X+, r17
 	st X+, r18

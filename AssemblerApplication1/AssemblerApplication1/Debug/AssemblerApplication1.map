@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.8  C:\Users\Ilknur\Documents\Atmel Studio\7.0\AssemblerApplication1\AssemblerApplication1\main.asm Thu Mar 25 20:53:21 2021
+AVRASM ver. 2.2.8  C:\Users\Ilknur\Documents\Atmel Studio\7.0\AssemblerApplication1\AssemblerApplication1\main.asm Fri Apr 02 20:26:07 2021
 
 
 EQU  SIGNATURE_000 0000001e
@@ -873,11 +873,11 @@ EQU  T_LO_LMT     0000000a
 EQU  T_HI_LMT     000000f0
 EQU  MEM_START    00001000
 EQU  MEM_END      000010ff
-CSEG buttonwait   00000006
-CSEG checkTemp    0000000d
-CSEG tempRange    0000001b
-CSEG checkMoist   00000011
-CSEG moistRange   0000001e
-CSEG checkLevel   00000015
-CSEG levelRange   00000021
-CSEG exit         00000024
+CSEG buttonwait   00000009
+CSEG checkTemp    00000013
+CSEG tempRange    00000021
+CSEG checkMoist   00000017
+CSEG moistRange   00000024
+CSEG checkLevel   0000001b
+CSEG levelRange   00000027
+CSEG exit         0000002a

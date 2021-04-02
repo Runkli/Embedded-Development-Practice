@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.8  C:\Users\Ilknur\Documents\Atmel Studio\7.0\AssemblerApplication1\AssemblerApplication1\main.asm Thu Mar 25 20:53:21 2021
+AVRASM ver. 2.2.8  C:\Users\Ilknur\Documents\Atmel Studio\7.0\AssemblerApplication1\AssemblerApplication1\main.asm Fri Apr 02 20:26:07 2021
 
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc\m128def.inc'
 C:\Users\Ilknur\Documents\Atmel Studio\7.0\AssemblerApplication1\AssemblerApplication1\main.asm(17): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc\m128def.inc'
@@ -1304,68 +1304,72 @@ C:\Users\Ilknur\Documents\Atmel Studio\7.0\AssemblerApplication1\AssemblerApplic
 000004 e030                      	ldi r19, zeros	; water level	5 (0x5) <= W <= 250 (0xFA)
 000005 e040                      	ldi r20, zeros	; zero constant as register
                                  	
+000006 ef50                      	ldi r21, 0xF0	; for input/output config of ddrg
+000007 9350 0064                 	sts ddrg, r21
                                  	; pin a LED
                                  buttonwait:	; Button wait routine	
-000006 e000                      	ldi r16, zeros	; overwrite default state to off
-000007 b309                      	in r16, pina		; read button pin a into register 0
-000008 3f0f                      	cpi r16, 0xFF	; button press means all 1s
-000009 f7e1                      	brne buttonwait	; jump and wait for input
+000009 e000                      	ldi r16, zeros	; overwrite default state to off
+00000a 9350 0065                 	sts portg, r21		
+00000c 9100 0063                 	lds r16, ping	; read button pin a into register 0
+00000e 3f0f                      	cpi r16, 0xFF	; button press means all 1s
+00000f f7c9                      	brne buttonwait	; jump and wait for input
                                  ; If button is pressed
                                  	; Read data from 3 pins
                                  	; r17 Temprature, r18 Moisture, r19 Water level
-00000a b316                      	in r17, pinb
-00000b b323                      	in r18, pinc
-00000c b330                      	in r19, pind
+000010 b319                      	in r17, pina
+000011 b326                      	in r18, pinb
+000012 b333                      	in r19, pinc
                                  	
                                  ; Sanitizing
                                  checkTemp:
-00000d 301a                      	cpi r17, 0xA	; check if less than 10
-00000e f060                      	brlo tempRange
-00000f 3f11                      	cpi r17, 0xF1	; if equal or bigger than 241
-000010 f450                      	brsh tempRange
+000013 301a                      	cpi r17, 0xA	; check if less than 10
+000014 f060                      	brlo tempRange
+000015 3f11                      	cpi r17, 0xF1	; if equal or bigger than 241
+000016 f450                      	brsh tempRange
                                  checkMoist:
-000011 3124                      	cpi r18, 0x14	; check if less than 20
-000012 f058                      	brlo moistRange
-000013 3c29                      	cpi r18, 0xC9	; check if equal or bigger than 201
-000014 f448                      	brsh moistRange
+000017 3124                      	cpi r18, 0x14	; check if less than 20
+000018 f058                      	brlo moistRange
+000019 3c29                      	cpi r18, 0xC9	; check if equal or bigger than 201
+00001a f448                      	brsh moistRange
                                  checkLevel:
-000015 3035                      	cpi r19, 0x5
-000016 f050                      	brlo levelRange
-000017 3f3b                      	cpi r19, 0xFB	; if equal or more than 251
-000018 f440                      	brsh levelRange
-000019 940c 0024                 	jmp exit
+00001b 3035                      	cpi r19, 0x5
+00001c f050                      	brlo levelRange
+00001d 3f3b                      	cpi r19, 0xFB	; if equal or more than 251
+00001e f440                      	brsh levelRange
+00001f 940c 002a                 	jmp exit
                                  
                                  ; flow control and next states
                                  tempRange:
-00001b ef1f                      	ldi r17, 0xFF
-00001c 940c 0011                 	jmp checkMoist
+000021 ef1f                      	ldi r17, 0xFF
+000022 940c 0017                 	jmp checkMoist
                                  
                                  moistRange:
-00001e ef2f                      	ldi r18, 0xFF
-00001f 940c 0015                 	jmp checkLevel
+000024 ef2f                      	ldi r18, 0xFF
+000025 940c 001b                 	jmp checkLevel
                                  
                                  levelRange:
-000021 ef3f                      	ldi r19, 0xFF
-000022 940c 0024                 	jmp exit
+000027 ef3f                      	ldi r19, 0xFF
+000028 940c 002a                 	jmp exit
                                  exit:
                                  	; output to io
-000024 bb18                      	out portb, r17
-000025 bb25                      	out portc, r18
-000026 bb32                      	out portd, r19
+00002a 9300 0065                 	sts portg, r16 ; acknowledge led output
+00002c bb12                      	out portd, r17
+00002d b923                      	out porte, r18
+00002e 9330 0062                 	sts portf, r19
                                  	; output to memory
-000027 931d                      	st X+, r17
-000028 932d                      	st X+, r18
-000029 933d                      	st X+, r19
-00002a 934d                      	st X+, r20
+000030 931d                      	st X+, r17
+000031 932d                      	st X+, r18
+000032 933d                      	st X+, r19
+000033 934d                      	st X+, r20
                                  	
                                  	; if no space left in SRAM,
                                  	; set the pointer to the beginning of memory
-00002b 3fac                      	cpi XL, 0xfc
-00002c f6c9                      	brne buttonwait
+000034 3fac                      	cpi XL, 0xfc
+000035 f699                      	brne buttonwait
                                  
-00002d e1b0                      	ldi XH, high(MEM_START)
-00002e e0a0                      	ldi XL, low(MEM_START)
-00002f 940c 0006                 	jmp buttonwait
+000036 e1b0                      	ldi XH, high(MEM_START)
+000037 e0a0                      	ldi XL, low(MEM_START)
+000038 940c 0009                 	jmp buttonwait
                                  	
 
 
@@ -1386,10 +1390,10 @@ counted separately from r26..r31 here.
 "ATmega128" register use summary:
 x  :   4 y  :   0 z  :   0 r0 :   0 r1 :   0 r2 :   0 r3 :   0 r4 :   0 
 r5 :   0 r6 :   0 r7 :   0 r8 :   0 r9 :   0 r10:   0 r11:   0 r12:   0 
-r13:   0 r14:   0 r15:   0 r16:   3 r17:   7 r18:   7 r19:   7 r20:   2 
-r21:   0 r22:   0 r23:   0 r24:   0 r25:   0 r26:   3 r27:   2 r28:   0 
+r13:   0 r14:   0 r15:   0 r16:   4 r17:   7 r18:   7 r19:   7 r20:   2 
+r21:   3 r22:   0 r23:   0 r24:   0 r25:   0 r26:   3 r27:   2 r28:   0 
 r29:   0 r30:   0 r31:   0 
-Registers used: 8 out of 35 (22.9%)
+Registers used: 9 out of 35 (25.7%)
 
 "ATmega128" instruction use summary:
 .lds  :   0 .sts  :   0 adc   :   0 add   :   0 adiw  :   0 and   :   0 
@@ -1401,23 +1405,23 @@ brvs  :   0 bset  :   0 bst   :   0 call  :   0 cbi   :   0 cbr   :   0
 clc   :   0 clh   :   0 cli   :   0 cln   :   0 clr   :   0 cls   :   0 
 clt   :   0 clv   :   0 clz   :   0 com   :   0 cp    :   0 cpc   :   0 
 cpi   :   8 cpse  :   0 dec   :   0 elpm  :   0 eor   :   0 fmul  :   0 
-fmuls :   0 fmulsu:   0 icall :   0 ijmp  :   0 in    :   4 inc   :   0 
-jmp   :   5 ld    :   0 ldd   :   0 ldi   :  12 lds   :   0 lpm   :   0 
+fmuls :   0 fmulsu:   0 icall :   0 ijmp  :   0 in    :   3 inc   :   0 
+jmp   :   5 ld    :   0 ldd   :   0 ldi   :  13 lds   :   1 lpm   :   0 
 lsl   :   0 lsr   :   0 mov   :   0 movw  :   0 mul   :   0 muls  :   0 
-mulsu :   0 neg   :   0 nop   :   0 or    :   0 ori   :   0 out   :   3 
+mulsu :   0 neg   :   0 nop   :   0 or    :   0 ori   :   0 out   :   2 
 pop   :   0 push  :   0 rcall :   0 ret   :   0 reti  :   0 rjmp  :   0 
 rol   :   0 ror   :   0 sbc   :   0 sbci  :   0 sbi   :   0 sbic  :   0 
 sbis  :   0 sbiw  :   0 sbr   :   0 sbrc  :   0 sbrs  :   0 sec   :   0 
 seh   :   0 sei   :   0 sen   :   0 ser   :   0 ses   :   0 set   :   0 
 sev   :   0 sez   :   0 sleep :   0 spm   :   0 st    :   4 std   :   0 
-sts   :   0 sub   :   0 subi  :   0 swap  :   0 tst   :   0 wdr   :   0 
+sts   :   4 sub   :   0 subi  :   0 swap  :   0 tst   :   0 wdr   :   0 
 
-Instructions used: 9 out of 114 (7.9%)
+Instructions used: 11 out of 114 (9.6%)
 
 "ATmega128" memory use summary [bytes]:
 Segment   Begin    End      Code   Data   Used    Size   Use%
 ---------------------------------------------------------------
-[.cseg] 0x000000 0x000062     98      0     98  131072   0.1%
+[.cseg] 0x000000 0x000074    116      0    116  131072   0.1%
 [.dseg] 0x000100 0x000100      0      0      0    4096   0.0%
 [.eseg] 0x000000 0x000000      0      0      0    4096   0.0%
 

@@ -22,13 +22,13 @@
   <FILE>AssemblerApplication1.lss</FILE>
  </OUTPUT_FILES>
  <LABELS>
-  <buttonwait><FILE>C:\Users\Ilknur\Documents\Atmel Studio\7.0\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>39</LINE></buttonwait>
-  <checkTemp><FILE>C:\Users\Ilknur\Documents\Atmel Studio\7.0\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>52</LINE></checkTemp>
-  <tempRange><FILE>C:\Users\Ilknur\Documents\Atmel Studio\7.0\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>70</LINE></tempRange>
-  <checkMoist><FILE>C:\Users\Ilknur\Documents\Atmel Studio\7.0\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>57</LINE></checkMoist>
-  <moistRange><FILE>C:\Users\Ilknur\Documents\Atmel Studio\7.0\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>74</LINE></moistRange>
-  <checkLevel><FILE>C:\Users\Ilknur\Documents\Atmel Studio\7.0\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>62</LINE></checkLevel>
-  <levelRange><FILE>C:\Users\Ilknur\Documents\Atmel Studio\7.0\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>78</LINE></levelRange>
-  <exit><FILE>C:\Users\Ilknur\Documents\Atmel Studio\7.0\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>81</LINE></exit>
+  <buttonwait><FILE>C:\Users\Ilknur\Documents\Atmel Studio\7.0\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>41</LINE></buttonwait>
+  <checkTemp><FILE>C:\Users\Ilknur\Documents\Atmel Studio\7.0\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>55</LINE></checkTemp>
+  <tempRange><FILE>C:\Users\Ilknur\Documents\Atmel Studio\7.0\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>73</LINE></tempRange>
+  <checkMoist><FILE>C:\Users\Ilknur\Documents\Atmel Studio\7.0\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>60</LINE></checkMoist>
+  <moistRange><FILE>C:\Users\Ilknur\Documents\Atmel Studio\7.0\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>77</LINE></moistRange>
+  <checkLevel><FILE>C:\Users\Ilknur\Documents\Atmel Studio\7.0\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>65</LINE></checkLevel>
+  <levelRange><FILE>C:\Users\Ilknur\Documents\Atmel Studio\7.0\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>81</LINE></levelRange>
+  <exit><FILE>C:\Users\Ilknur\Documents\Atmel Studio\7.0\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>84</LINE></exit>
  </LABELS>
 </ASSEMBLER_INFO>
