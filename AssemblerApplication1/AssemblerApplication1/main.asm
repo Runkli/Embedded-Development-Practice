@@ -35,19 +35,20 @@
 	ldi r19, zeros	; water level	5 (0x5) <= W <= 250 (0xFA)
 	ldi r20, zeros	; zero constant as register
 	
+	out ddrg, 0x0F
 	; pin a LED
 buttonwait:	; Button wait routine	
 	ldi r16, zeros	; overwrite default state to off
-	out r16, porta	
-	in r16, pina		; read button pin a into register 0
+	out r16, portg		
+	in r16, ping	; read button pin a into register 0
 	cpi r16, 0xFF	; button press means all 1s
 	brne buttonwait	; jump and wait for input
 ; If button is pressed
 	; Read data from 3 pins
 	; r17 Temprature, r18 Moisture, r19 Water level
-	in r17, pinb
-	in r18, pinc
-	in r19, pind
+	in r17, pina
+	in r18, pinb
+	in r19, pinc
 	
 ; Sanitizing
 checkTemp:
@@ -81,10 +82,10 @@ levelRange:
 	jmp exit
 exit:
 	; output to io
-	out porta, r16 ; acknowledge led output
-	out portb, r17
-	out portc, r18
-	out portd, r19
+	out portg, r16 ; acknowledge led output
+	out portd, r17
+	out porte, r18
+	out portf, r19
 	; output to memory
 	st X+, r17
 	st X+, r18
