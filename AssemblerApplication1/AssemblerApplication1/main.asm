@@ -1,12 +1,3 @@
-;
-; AssemblerApplication1.asm
-;
-; Created: 22-Mar-21 12:27:47 PM
-; Author : Ilknur
-;
-
-
-;
 ; This is a simple ATmega128 assembly firmware to solve the
 ; problem of receiving 3 unsigned 8-bit parameters using
 ; parallel ports through simple Request/Acknowledge protocol,
@@ -14,36 +5,40 @@
 ; outputting them to parallel ports, and logging the values to
 ; internal data memory (SRAM).
 ; Code
-.INCLUDE "m128def.inc"
+.include "m128def.inc"
 .EQU ZEROS = 0x00
 .EQU ONES = 0xFF
 .EQU T_LO_LMT = 0x0A
 .EQU T_HI_LMT =0xF0
-; You may want to define some other constants here for readability
-; of your code…
 .EQU MEM_START = 0x1000
 .EQU MEM_END = 0x10FF
 .CSEG
 ; Start using the Program Memory at the following address
-.ORG 0x000 ; in the lab pdf, this is 0x050
+	jmp 0x050 ;jump to program
+.ORG 0x050 ;set program start address
 	ldi XH, high(MEM_START)
 	ldi XL, low(MEM_START)
-
-	;out ddra, r16
+	
 	ldi r17, zeros	; temprature:	10 (0xA) <= T <= 240 (0xF0)
 	ldi r18, zeros	; moisture:		20 (0x14) <= M <= 200 (0xC8) 
 	ldi r19, zeros	; water level	5 (0x5) <= W <= 250 (0xFA)
 	ldi r20, zeros	; zero constant as register
 	
-	ldi r21, 0xF0	; for input/output config of ddrg
-	sts ddrg, r21
-	; pin a LED
-buttonwait:	; Button wait routine	
+	ldi r21, 0x01	; for input/output config of ddrg 00001, one bit for output
+	sts ddrg, r21	;setting the ddrg
+	ldi r22, 1
+	ldi r23, 0xFF
+	out ddrd, r23
+	out ddre, r23
+	sts ddrf, r23
 	ldi r16, zeros	; overwrite default state to off
-	sts portg, r21		
+buttonwait:	; Button wait routine	
 	lds r16, ping	; read button pin a into register 0
-	cpi r16, 0xFF	; button press means all 1s
-	brne buttonwait	; jump and wait for input
+	
+	sbrs r16, 4
+	rjmp buttonwait	; jump and wait for input
+	sts ping, r22
+	sts ping, r16 ; acknowledge led output
 ; If button is pressed
 	; Read data from 3 pins
 	; r17 Temprature, r18 Moisture, r19 Water level
@@ -83,7 +78,6 @@ levelRange:
 	jmp exit
 exit:
 	; output to io
-	sts portg, r16 ; acknowledge led output
 	out portd, r17
 	out porte, r18
 	sts portf, r19
@@ -93,6 +87,13 @@ exit:
 	st X+, r19
 	st X+, r20
 	
+	
+buttonwait2:	; Button wait routine
+	lds r16, ping	; read button pin a into register 16
+	sbrc r16, 4
+	rjmp buttonwait2	; jump and wait for input
+	sts ping, r16
+	
 	; if no space left in SRAM,
 	; set the pointer to the beginning of memory
 	cpi XL, 0xfc
@@ -100,5 +101,6 @@ exit:
 
 	ldi XH, high(MEM_START)
 	ldi XL, low(MEM_START)
+	
 	jmp buttonwait
 	
