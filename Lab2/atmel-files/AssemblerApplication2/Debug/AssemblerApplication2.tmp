@@ -1,0 +1,37 @@
+<ASSEMBLER_INFO>
+ <VERSION>2.2.8</VERSION>
+ <DEVICE>"ATmega128"</DEVICE>
+ <WORKING_DIR>C:\Users\Ilknur\Documents\Atmel Studio\7.0\AssemblerApplication2\AssemblerApplication2\Debug</WORKING_DIR>
+ <INCLUDE_PATH>
+  <DIR>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc</DIR>
+  <DIR>C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avrassembler\Include</DIR>
+  <DIR></DIR>
+ </INCLUDE_PATH>
+ <SOURCE_FILE>C:\Users\Ilknur\Documents\Atmel Studio\7.0\AssemblerApplication2\AssemblerApplication2\main.asm</SOURCE_FILE>
+ <INCLUDED_FILES>
+  <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc\m128def.inc</FILE>
+ </INCLUDED_FILES>
+ <OBJECT_FILES>
+  <FILE>C:\Users\Ilknur\Documents\Atmel Studio\7.0\AssemblerApplication2\AssemblerApplication2\Debug\AssemblerApplication2.obj</FILE>
+ </OBJECT_FILES>
+ <HEX_FILES>
+  <FILE>AssemblerApplication2.hex</FILE>
+ </HEX_FILES>
+ <OUTPUT_FILES>
+  <FILE>AssemblerApplication2.map</FILE>
+  <FILE>AssemblerApplication2.lss</FILE>
+ </OUTPUT_FILES>
+ <LABELS>
+  <start><FILE>C:\Users\Ilknur\Documents\Atmel Studio\7.0\AssemblerApplication2\AssemblerApplication2\main.asm</FILE><LINE>84</LINE></start>
+  <CONF_PORTS><FILE>C:\Users\Ilknur\Documents\Atmel Studio\7.0\AssemblerApplication2\AssemblerApplication2\main.asm</FILE><LINE>8</LINE></CONF_PORTS>
+  <INIT><FILE>C:\Users\Ilknur\Documents\Atmel Studio\7.0\AssemblerApplication2\AssemblerApplication2\main.asm</FILE><LINE>21</LINE></INIT>
+  <CRC3><FILE>C:\Users\Ilknur\Documents\Atmel Studio\7.0\AssemblerApplication2\AssemblerApplication2\main.asm</FILE><LINE>32</LINE></CRC3>
+  <s1><FILE>C:\Users\Ilknur\Documents\Atmel Studio\7.0\AssemblerApplication2\AssemblerApplication2\main.asm</FILE><LINE>65</LINE></s1>
+  <s2><FILE>C:\Users\Ilknur\Documents\Atmel Studio\7.0\AssemblerApplication2\AssemblerApplication2\main.asm</FILE><LINE>70</LINE></s2>
+  <cont><FILE>C:\Users\Ilknur\Documents\Atmel Studio\7.0\AssemblerApplication2\AssemblerApplication2\main.asm</FILE><LINE>75</LINE></cont>
+  <rec><FILE>C:\Users\Ilknur\Documents\Atmel Studio\7.0\AssemblerApplication2\AssemblerApplication2\main.asm</FILE><LINE>102</LINE></rec>
+  <subr_c3_NO><FILE>C:\Users\Ilknur\Documents\Atmel Studio\7.0\AssemblerApplication2\AssemblerApplication2\main.asm</FILE><LINE>122</LINE></subr_c3_NO>
+  <branch1><FILE>C:\Users\Ilknur\Documents\Atmel Studio\7.0\AssemblerApplication2\AssemblerApplication2\main.asm</FILE><LINE>113</LINE></branch1>
+  <subr_c3_NO_y><FILE>C:\Users\Ilknur\Documents\Atmel Studio\7.0\AssemblerApplication2\AssemblerApplication2\main.asm</FILE><LINE>132</LINE></subr_c3_NO_y>
+ </LABELS>
+</ASSEMBLER_INFO>
