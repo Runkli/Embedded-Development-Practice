@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.8  C:\Users\Ilknur\Documents\Atmel Studio\7.0\AssemblerApplication2\AssemblerApplication2\main.asm Sat Apr 24 19:41:19 2021
+AVRASM ver. 2.2.8  C:\Users\Ilknur\Documents\Atmel Studio\7.0\AssemblerApplication2\AssemblerApplication2\main.asm Sun Apr 25 17:31:07 2021
 
 
 EQU  SIGNATURE_000 0000001e
@@ -873,12 +873,13 @@ CSEG CONF_PORTS   00000002
 CSEG INIT         0000000e
 CSEG CRC3         00000015
 DEF  packet       r20
-DEF  reference    r21
-DEF  code         r16
-DEF  compare      r17
 CSEG s1           00000020
 CSEG s2           00000024
 CSEG cont         00000028
+CSEG CRC_CHECK3   0000002d
+DEF  original_packet r21
+CSEG CRC_CHECK3_pass 00000033
+CSEG CRC_CHECK3_finish 00000034
 CSEG rec          0000090e
 CSEG subr_c3_NO   00000917
 CSEG branch1      00000917

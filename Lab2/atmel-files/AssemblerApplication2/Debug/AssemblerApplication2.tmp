@@ -22,16 +22,19 @@
   <FILE>AssemblerApplication2.lss</FILE>
  </OUTPUT_FILES>
  <LABELS>
-  <start><FILE>C:\Users\Ilknur\Documents\Atmel Studio\7.0\AssemblerApplication2\AssemblerApplication2\main.asm</FILE><LINE>84</LINE></start>
+  <start><FILE>C:\Users\Ilknur\Documents\Atmel Studio\7.0\AssemblerApplication2\AssemblerApplication2\main.asm</FILE><LINE>103</LINE></start>
   <CONF_PORTS><FILE>C:\Users\Ilknur\Documents\Atmel Studio\7.0\AssemblerApplication2\AssemblerApplication2\main.asm</FILE><LINE>8</LINE></CONF_PORTS>
   <INIT><FILE>C:\Users\Ilknur\Documents\Atmel Studio\7.0\AssemblerApplication2\AssemblerApplication2\main.asm</FILE><LINE>21</LINE></INIT>
   <CRC3><FILE>C:\Users\Ilknur\Documents\Atmel Studio\7.0\AssemblerApplication2\AssemblerApplication2\main.asm</FILE><LINE>32</LINE></CRC3>
   <s1><FILE>C:\Users\Ilknur\Documents\Atmel Studio\7.0\AssemblerApplication2\AssemblerApplication2\main.asm</FILE><LINE>65</LINE></s1>
   <s2><FILE>C:\Users\Ilknur\Documents\Atmel Studio\7.0\AssemblerApplication2\AssemblerApplication2\main.asm</FILE><LINE>70</LINE></s2>
   <cont><FILE>C:\Users\Ilknur\Documents\Atmel Studio\7.0\AssemblerApplication2\AssemblerApplication2\main.asm</FILE><LINE>75</LINE></cont>
-  <rec><FILE>C:\Users\Ilknur\Documents\Atmel Studio\7.0\AssemblerApplication2\AssemblerApplication2\main.asm</FILE><LINE>102</LINE></rec>
-  <subr_c3_NO><FILE>C:\Users\Ilknur\Documents\Atmel Studio\7.0\AssemblerApplication2\AssemblerApplication2\main.asm</FILE><LINE>122</LINE></subr_c3_NO>
-  <branch1><FILE>C:\Users\Ilknur\Documents\Atmel Studio\7.0\AssemblerApplication2\AssemblerApplication2\main.asm</FILE><LINE>113</LINE></branch1>
-  <subr_c3_NO_y><FILE>C:\Users\Ilknur\Documents\Atmel Studio\7.0\AssemblerApplication2\AssemblerApplication2\main.asm</FILE><LINE>132</LINE></subr_c3_NO_y>
+  <CRC_CHECK3><FILE>C:\Users\Ilknur\Documents\Atmel Studio\7.0\AssemblerApplication2\AssemblerApplication2\main.asm</FILE><LINE>87</LINE></CRC_CHECK3>
+  <CRC_CHECK3_pass><FILE>C:\Users\Ilknur\Documents\Atmel Studio\7.0\AssemblerApplication2\AssemblerApplication2\main.asm</FILE><LINE>96</LINE></CRC_CHECK3_pass>
+  <CRC_CHECK3_finish><FILE>C:\Users\Ilknur\Documents\Atmel Studio\7.0\AssemblerApplication2\AssemblerApplication2\main.asm</FILE><LINE>98</LINE></CRC_CHECK3_finish>
+  <rec><FILE>C:\Users\Ilknur\Documents\Atmel Studio\7.0\AssemblerApplication2\AssemblerApplication2\main.asm</FILE><LINE>121</LINE></rec>
+  <subr_c3_NO><FILE>C:\Users\Ilknur\Documents\Atmel Studio\7.0\AssemblerApplication2\AssemblerApplication2\main.asm</FILE><LINE>137</LINE></subr_c3_NO>
+  <branch1><FILE>C:\Users\Ilknur\Documents\Atmel Studio\7.0\AssemblerApplication2\AssemblerApplication2\main.asm</FILE><LINE>132</LINE></branch1>
+  <subr_c3_NO_y><FILE>C:\Users\Ilknur\Documents\Atmel Studio\7.0\AssemblerApplication2\AssemblerApplication2\main.asm</FILE><LINE>147</LINE></subr_c3_NO_y>
  </LABELS>
 </ASSEMBLER_INFO>

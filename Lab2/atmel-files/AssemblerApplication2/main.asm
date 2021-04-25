@@ -77,8 +77,27 @@ cont:
 	pop r21
 	pop r17
 	pop r16
-	push r20
+	;push r20
+.undef packet
+.undef reference
+.undef code
+.undef compare
 	ret
+
+CRC_CHECK3:
+	.def original_packet=r21
+	.def packet = r20
+	mov original_packet, packet
+	rcall CRC3 ; reads and writes to r20
+	cp packet, original_packet
+	breq CRC_CHECK3_pass	; if they are equal, store 0xFF (1, true) return value to r16
+	ldi r16, 0x00	; if not true, then store 0, false in r16
+	rjmp CRC_CHECK3_finish
+CRC_CHECK3_pass:
+	ldi r16, 0xFF	; store true
+CRC_CHECK3_finish:	
+	ret
+
 
 .org 0x900
 start:
