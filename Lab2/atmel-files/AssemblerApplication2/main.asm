@@ -234,11 +234,11 @@ SERVICE_READOUT:
 	push r16
 
 	lds r16, pinf
-	sbrs r16, 0
+	sbrc r16, 0
 	rjmp start_mem_dump
 	
 	lds r16, pinf
-	sbrs r16, 1
+	sbrc r16, 1
 	rjmp transmit_last_entry
 
 	pop r16
