@@ -1,10 +1,4 @@
-/*
- * LabModule3.c
- *
- * Created: 27-May-21 1:31:38 PM
- * Author : Ilknur
- */ 
-unsigned char TOS; // 8 bit variable for top of stack
+unsigned char TOS = NULL; // 8 bit variable for top of stack
 
 #include <avr/io.h>
 #include <avr/interrupt.h>
@@ -14,23 +8,82 @@ unsigned char TOS; // 8 bit variable for top of stack
 #include <string.h> 
 #include "../CRC.h"
 
-//unsigned char gen = 0x35; // the generator polynomial, 0b110101
+// the generator polynomial, 0b110101
+#define RESET_REQUEST 0x00
+
+void TRANSMIT(unsigned char packet) {
+	PORTE = packet;
+}
 
 
-
+#if 1 // 1 for project, 0 for bottom main function to use as test bench
 int main(void) {
-	//unsigned char command = 0xE0;
-	//command = CRC3(command);
-	//int a = 2+3;
+	// Port configurations
+	DDRF = 0x08;
+	DDRB = 0xFF;
+	DDRD = 0X00;
+	DDRE = 0XFF;
+	
+	// XMEM
+	MCUCR = 0X80; // 1000 0000
+	
+	// pre_init
+	PORTF = 0x00; 
+
+	// INIT
+	/* 
+	init stack pointer
+	*/
+	unsigned char start = PINF;
+	
+	// Init
+	unsigned char packet = CRC3(RESET_REQUEST);
+	TRANSMIT(packet);
+	TOS = packet;
+	
+	/* 
+	Service readout
+	*/
+	
+	
+	// Assert ready
+	PORTF = 0x08;
+	
+	if ( !(1<<4)&PINF) { // if receive FALSE, do something, otherwise continue
+		
+	}
+	PORTF = 0x00;
+	unsigned char packet_in = PIND;
+	
+	if ((1<<7)&packet_in) { // packet_in is command, if bit 7 is set, it is command
+		if (!(1<<7)&TOS) { // if TOS has data packet, if bit 7 is not set, it is data
+			CRC_CHECK11(packet_in);
+		} else {
+			if (CRC_CHECK3(packet_in)) { // if CRC_CHECK3 pass
+				// acknowledge
+			} else {
+				// repeat request
+			}
+			
+		}
+	} else {
+		if(TOS){
+			TOS = NULL;
+		}
+		TOS = packet_in;
+		// JUMP PRE-SERVICE READOUT
+	}
+	
+}
+
+#else
+int main(void) {
 	DDRB = 0xFF;
 	TOS = 0x80;
 	unsigned char input = 0x80;
 	PORTB = input;
 	input = CRC_CHECK11(input);
 	PORTB = input;
-	//while (1) {
-	//	PORTB = input;
-	//}
 	
  }
-
+#endif
