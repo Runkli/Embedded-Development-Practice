@@ -25,7 +25,7 @@ char * pointer2 = 0;
 void rollDataPointer(){
 	dataPointer++;
 	if(dataPointer > 5199)
-	dataPointer = 0;
+		dataPointer = 0;
 }
 
 // the generator polynomial, 0b110101
@@ -47,7 +47,7 @@ void SERVICE_READOUT() {
 			PORTB = data[i];
 			_delay_ms(1000);
 		}
-	} else if( (1<<1)&user_input ) { // if pin 1 is set, show last entry
+		} else if( (1<<1)&user_input ) { // if pin 1 is set, show last entry
 		PORTB = data[dataPointer - 1];
 	}
 }
@@ -58,21 +58,12 @@ void SYS_CONFIG(){
 	// XMEM
 	MCUCR = 0X80; // 1000 0000
 	
-	// USART 0, BLUETOOTH
+	// USART 1, BLUETOOTH
 	UCSR0C = (1<<UCSZ01)|(1<<UCSZ00); // setting data width to 8
-	UBRR0H = (BR_Calc>>8); // setting baud rate to 9600 by setting UBBR to 0x33
+	UBRR0H = (BR_Calc>>8); // setting baud rate to 9600 by setting UBBR to 0x66
 	UBRR0L = BR_Calc;
-	UCSR0B = (1<<TXEN0) | (1<<RXCIE0)| (1<<TXCIE0) | (1<<RXEN0); // enable transmitter, receiver, and receive and transmit complete interrupts
-	
-	
-	// USART 1, XBEE
-	UCSR1C = (1<<UCSZ11)|(1<<UCSZ10); // setting data width to 8
-	UBRR1H = (BR_Calc>>8); // setting baud rate to 9600 by setting UBBR to 0x33
-	UBRR1L = BR_Calc;
-	UCSR1B = (1<<TXEN1) | (1<<RXCIE1)| (1<<TXCIE1) | (1<<RXEN1);; // enable transmitter, receiver, and receive and transmit complete interrupts
-	
-	// enable global interrupts
-	sei();
+	//UCSR0B = (1<<RXEN0); // enable receiver
+	UCSR0B = (1<<TXEN0); // enable transmitter
 }
 
 void LOG_REQUEST_FUNCTION(unsigned char packet_in){
@@ -83,11 +74,6 @@ void LOG_REQUEST_FUNCTION(unsigned char packet_in){
 // incomplete
 void SENSOR_TRANSMIT(unsigned char sensor_packet_out) {
 	sensor_packet_out = CRC3(sensor_packet_out);
-	
-	while(!(UCSR1A & (1<<UDRE1)))
-		_delay_ms(100);
-
-	UDR1 = sensor_packet_out;
 }
 
 // incomplete
@@ -101,8 +87,9 @@ void USER_TRANSMIT(unsigned char user_packet_out) {
 }
 
 void INIT(){
-	SENSOR_TRANSMIT(RESET_REQUEST);
-	TOS = CRC3(RESET_REQUEST);
+	unsigned char packet = CRC3(RESET_REQUEST);
+	SENSOR_TRANSMIT(packet);
+	TOS = packet;
 	TOS_STATE = FULL;
 }
 
@@ -150,12 +137,13 @@ void TREAT_SENSOR_DATA(){
 	}
 }
 
+
 // incomplete
 void TREAT_USER_INPUT(){
 	SERVICE_READOUT();
 }
 
-#if 1 // 1 for project, 0 for bottom main function to use as test bench
+#if 0 // 1 for project, 0 for bottom main function to use as test bench
 int main(void) {
 	SYS_CONFIG();
 	INIT();
@@ -172,7 +160,9 @@ int main(void) {
 #else
 int main(void) {
 	SYS_CONFIG();
-	INIT();
-	
+	// INIT();
+	//DDRB = 255;
+	//PORTB = 255;
+	USER_TRANSMIT(0Xff);
 }
 #endif

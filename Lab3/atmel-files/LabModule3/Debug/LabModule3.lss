@@ -3,31 +3,31 @@ LabModule3.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .data         00000000  00800100  00800100  000001c4  2**0
+  0 .data         00000000  00800100  00800100  000001c6  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  1 .text         00000150  00000000  00000000  00000074  2**1
+  1 .text         00000152  00000000  00000000  00000074  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .bss          00000001  00800100  00800100  000001c4  2**0
+  2 .bss          00000002  00800100  00800100  000001c6  2**0
                   ALLOC
-  3 .comment      00000030  00000000  00000000  000001c4  2**0
+  3 .comment      00000030  00000000  00000000  000001c6  2**0
                   CONTENTS, READONLY
-  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  000001f4  2**2
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  000001f8  2**2
                   CONTENTS, READONLY
-  5 .debug_aranges 00000038  00000000  00000000  00000230  2**0
+  5 .debug_aranges 00000088  00000000  00000000  00000234  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   00000988  00000000  00000000  00000268  2**0
+  6 .debug_info   00000cfd  00000000  00000000  000002bc  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 000007e7  00000000  00000000  00000bf0  2**0
+  7 .debug_abbrev 00000930  00000000  00000000  00000fb9  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   00000376  00000000  00000000  000013d7  2**0
+  8 .debug_line   000005db  00000000  00000000  000018e9  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  0000005c  00000000  00000000  00001750  2**2
+  9 .debug_frame  000000fc  00000000  00000000  00001ec4  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    0000041e  00000000  00000000  000017ac  2**0
+ 10 .debug_str    0000055e  00000000  00000000  00001fc0  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    000001e6  00000000  00000000  00001bca  2**0
+ 11 .debug_loc    0000034a  00000000  00000000  0000251e  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00000028  00000000  00000000  00001db0  2**0
+ 12 .debug_ranges 00000090  00000000  00000000  00002868  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -122,183 +122,114 @@ Disassembly of section .text:
   a0:	1d 92       	st	X+, r1
 
 000000a2 <.do_clear_bss_start>:
-  a2:	a1 30       	cpi	r26, 0x01	; 1
+  a2:	a2 30       	cpi	r26, 0x02	; 2
   a4:	b2 07       	cpc	r27, r18
   a6:	e1 f7       	brne	.-8      	; 0xa0 <.do_clear_bss_loop>
-  a8:	46 d0       	rcall	.+140    	; 0x136 <main>
-  aa:	50 c0       	rjmp	.+160    	; 0x14c <_exit>
+  a8:	4a d0       	rcall	.+148    	; 0x13e <main>
+  aa:	51 c0       	rjmp	.+162    	; 0x14e <_exit>
 
 000000ac <__bad_interrupt>:
   ac:	a9 cf       	rjmp	.-174    	; 0x0 <__vectors>
 
-000000ae <CRC_CHECK11>:
-	
-	return return_value;
+000000ae <CRC3>:
 }
 
-unsigned char CRC_CHECK11(unsigned char command) {
-	unsigned char data = TOS;
-  ae:	60 91 00 01 	lds	r22, 0x0100	; 0x800100 <__DATA_REGION_ORIGIN__>
-	unsigned char org_com = command, org_dat = data, temp;
-	
-	command = command & 0xE0;// isolate first 3 bits, 11100000
-  b2:	80 7e       	andi	r24, 0xE0	; 224
-	// packet DDDDDDDD
-	
-	temp = data & 0b11;
-	// temp   000000DD
-	
-	temp = temp<<6;
-  b4:	26 2f       	mov	r18, r22
-  b6:	22 95       	swap	r18
-  b8:	22 0f       	add	r18, r18
-  ba:	22 0f       	add	r18, r18
-  bc:	20 7c       	andi	r18, 0xC0	; 192
-	// temp	  DD000000
-	
-	data = data>>2; // align with polynomial
-  be:	66 95       	lsr	r22
-  c0:	66 95       	lsr	r22
-	// data   00DDDDDD
-	
-	if( data >= 0x20 )
-  c2:	60 32       	cpi	r22, 0x20	; 32
-  c4:	10 f0       	brcs	.+4      	; 0xca <CRC_CHECK11+0x1c>
-	data ^= gen;
-  c6:	95 e3       	ldi	r25, 0x35	; 53
-  c8:	69 27       	eor	r22, r25
-	
-	data = data<<1 | temp>> 7; // data 0DDDDDDT (lsb of data from temp)
-  ca:	70 e0       	ldi	r23, 0x00	; 0
-  cc:	66 0f       	add	r22, r22
-  ce:	77 1f       	adc	r23, r23
-  d0:	42 2f       	mov	r20, r18
-  d2:	44 1f       	adc	r20, r20
-  d4:	44 27       	eor	r20, r20
-  d6:	44 1f       	adc	r20, r20
-  d8:	64 2b       	or	r22, r20
-	temp = temp<<1; // T0000000
-  da:	22 0f       	add	r18, r18
-	if( data >= 0x20 )
-  dc:	60 32       	cpi	r22, 0x20	; 32
-  de:	10 f0       	brcs	.+4      	; 0xe4 <CRC_CHECK11+0x36>
-	data ^= gen;
-  e0:	95 e3       	ldi	r25, 0x35	; 53
-  e2:	69 27       	eor	r22, r25
-	
-	
-	data = data<<1 | temp>>6; // data DDDDDDTT ( lsb of data from temp)
-  e4:	46 2f       	mov	r20, r22
-  e6:	50 e0       	ldi	r21, 0x00	; 0
-  e8:	44 0f       	add	r20, r20
-  ea:	55 1f       	adc	r21, r21
-  ec:	22 95       	swap	r18
-  ee:	26 95       	lsr	r18
-  f0:	26 95       	lsr	r18
-  f2:	23 70       	andi	r18, 0x03	; 3
-  f4:	24 2b       	or	r18, r20
-	if( data >= 0x20 )
-  f6:	20 32       	cpi	r18, 0x20	; 32
-  f8:	10 f0       	brcs	.+4      	; 0xfe <CRC_CHECK11+0x50>
-	data ^= gen;
-  fa:	95 e3       	ldi	r25, 0x35	; 53
-  fc:	29 27       	eor	r18, r25
-	return_value = 0xFF;
-	
-	return return_value;
-}
 
-unsigned char CRC_CHECK11(unsigned char command) {
-  fe:	60 e0       	ldi	r22, 0x00	; 0
- 100:	70 e0       	ldi	r23, 0x00	; 0
- 102:	0f c0       	rjmp	.+30     	; 0x122 <CRC_CHECK11+0x74>
-	if( data >= 0x20 )
-	data ^= gen;
-	
-	// data DDDDDDDD
-	for (int i=0; i < 8; i++){
-		data = data<<1 | command>> 7;// data DDDDDDDC
- 104:	30 e0       	ldi	r19, 0x00	; 0
- 106:	22 0f       	add	r18, r18
- 108:	33 1f       	adc	r19, r19
- 10a:	48 2f       	mov	r20, r24
- 10c:	44 1f       	adc	r20, r20
- 10e:	44 27       	eor	r20, r20
- 110:	44 1f       	adc	r20, r20
- 112:	24 2b       	or	r18, r20
-		command = command<<1;		// cmd CCCCCCC0
- 114:	88 0f       	add	r24, r24
-		if ( data >= 0x20 )
- 116:	20 32       	cpi	r18, 0x20	; 32
- 118:	10 f0       	brcs	.+4      	; 0x11e <CRC_CHECK11+0x70>
-		data ^= gen;
- 11a:	95 e3       	ldi	r25, 0x35	; 53
- 11c:	29 27       	eor	r18, r25
-	data = data<<1 | temp>>6; // data DDDDDDTT ( lsb of data from temp)
-	if( data >= 0x20 )
-	data ^= gen;
-	
-	// data DDDDDDDD
-	for (int i=0; i < 8; i++){
- 11e:	6f 5f       	subi	r22, 0xFF	; 255
- 120:	7f 4f       	sbci	r23, 0xFF	; 255
- 122:	68 30       	cpi	r22, 0x08	; 8
- 124:	71 05       	cpc	r23, r1
- 126:	74 f3       	brlt	.-36     	; 0x104 <CRC_CHECK11+0x56>
-	}
-	
-	// data variable now holds the remainder, 5 bits long
-	// we will now check if the CRC which we obtained matches [4:0] in command variable
-	unsigned char return_value = 0x00;
-	if (data == (command&0x1F))
- 128:	8f 71       	andi	r24, 0x1F	; 31
- 12a:	28 17       	cp	r18, r24
- 12c:	11 f0       	breq	.+4      	; 0x132 <CRC_CHECK11+0x84>
-		data ^= gen;
-	}
-	
-	// data variable now holds the remainder, 5 bits long
-	// we will now check if the CRC which we obtained matches [4:0] in command variable
-	unsigned char return_value = 0x00;
+// incomplete
+void TREAT_USER_INPUT(){
+	SERVICE_READOUT();
+  ae:	98 2f       	mov	r25, r24
+  b0:	90 7e       	andi	r25, 0xE0	; 224
+  b2:	96 95       	lsr	r25
+  b4:	96 95       	lsr	r25
+  b6:	90 32       	cpi	r25, 0x20	; 32
+  b8:	10 f0       	brcs	.+4      	; 0xbe <CRC3+0x10>
+  ba:	25 e3       	ldi	r18, 0x35	; 53
+  bc:	92 27       	eor	r25, r18
+  be:	20 e0       	ldi	r18, 0x00	; 0
+  c0:	30 e0       	ldi	r19, 0x00	; 0
+  c2:	07 c0       	rjmp	.+14     	; 0xd2 <CRC3+0x24>
+  c4:	99 0f       	add	r25, r25
+  c6:	90 32       	cpi	r25, 0x20	; 32
+  c8:	10 f0       	brcs	.+4      	; 0xce <CRC3+0x20>
+  ca:	45 e3       	ldi	r20, 0x35	; 53
+  cc:	94 27       	eor	r25, r20
+  ce:	2f 5f       	subi	r18, 0xFF	; 255
+  d0:	3f 4f       	sbci	r19, 0xFF	; 255
+  d2:	22 30       	cpi	r18, 0x02	; 2
+  d4:	31 05       	cpc	r19, r1
+  d6:	b4 f3       	brlt	.-20     	; 0xc4 <CRC3+0x16>
+  d8:	89 2b       	or	r24, r25
+  da:	08 95       	ret
+
+000000dc <SYS_CONFIG>:
+  dc:	80 e8       	ldi	r24, 0x80	; 128
+  de:	85 bf       	out	0x35, r24	; 53
+  e0:	26 e0       	ldi	r18, 0x06	; 6
+  e2:	20 93 95 00 	sts	0x0095, r18	; 0x800095 <__TEXT_REGION_LENGTH__+0x7e0095>
+  e6:	10 92 90 00 	sts	0x0090, r1	; 0x800090 <__TEXT_REGION_LENGTH__+0x7e0090>
+  ea:	93 e3       	ldi	r25, 0x33	; 51
+  ec:	99 b9       	out	0x09, r25	; 9
+  ee:	88 ed       	ldi	r24, 0xD8	; 216
+  f0:	8a b9       	out	0x0a, r24	; 10
+  f2:	20 93 9d 00 	sts	0x009D, r18	; 0x80009d <__TEXT_REGION_LENGTH__+0x7e009d>
+  f6:	10 92 98 00 	sts	0x0098, r1	; 0x800098 <__TEXT_REGION_LENGTH__+0x7e0098>
+  fa:	90 93 99 00 	sts	0x0099, r25	; 0x800099 <__TEXT_REGION_LENGTH__+0x7e0099>
+  fe:	80 93 9a 00 	sts	0x009A, r24	; 0x80009a <__TEXT_REGION_LENGTH__+0x7e009a>
+ 102:	78 94       	sei
+ 104:	08 95       	ret
+
+00000106 <SENSOR_TRANSMIT>:
+ 106:	d3 df       	rcall	.-90     	; 0xae <CRC3>
+ 108:	09 c0       	rjmp	.+18     	; 0x11c <SENSOR_TRANSMIT+0x16>
+ 10a:	2f ef       	ldi	r18, 0xFF	; 255
+ 10c:	30 e7       	ldi	r19, 0x70	; 112
+ 10e:	92 e0       	ldi	r25, 0x02	; 2
+ 110:	21 50       	subi	r18, 0x01	; 1
+ 112:	30 40       	sbci	r19, 0x00	; 0
+ 114:	90 40       	sbci	r25, 0x00	; 0
+ 116:	e1 f7       	brne	.-8      	; 0x110 <SENSOR_TRANSMIT+0xa>
+ 118:	00 c0       	rjmp	.+0      	; 0x11a <SENSOR_TRANSMIT+0x14>
+ 11a:	00 00       	nop
+ 11c:	90 91 9b 00 	lds	r25, 0x009B	; 0x80009b <__TEXT_REGION_LENGTH__+0x7e009b>
+ 120:	95 ff       	sbrs	r25, 5
+ 122:	f3 cf       	rjmp	.-26     	; 0x10a <SENSOR_TRANSMIT+0x4>
+ 124:	80 93 9c 00 	sts	0x009C, r24	; 0x80009c <__TEXT_REGION_LENGTH__+0x7e009c>
+ 128:	08 95       	ret
+
+0000012a <INIT>:
+ 12a:	80 e0       	ldi	r24, 0x00	; 0
+ 12c:	ec df       	rcall	.-40     	; 0x106 <SENSOR_TRANSMIT>
  12e:	80 e0       	ldi	r24, 0x00	; 0
- 130:	08 95       	ret
-	if (data == (command&0x1F))
-	return_value = 0xFF;
- 132:	8f ef       	ldi	r24, 0xFF	; 255
-	return return_value;
-	
- 134:	08 95       	ret
+ 130:	be df       	rcall	.-132    	; 0xae <CRC3>
+ 132:	80 93 01 01 	sts	0x0101, r24	; 0x800101 <TOS>
+ 136:	81 e0       	ldi	r24, 0x01	; 1
+ 138:	80 93 00 01 	sts	0x0100, r24	; 0x800100 <__DATA_REGION_ORIGIN__>
+ 13c:	08 95       	ret
 
-00000136 <main>:
+0000013e <main>:
+}
 
+#if 1 // 1 for project, 0 for bottom main function to use as test bench
 int main(void) {
-	//unsigned char command = 0xE0;
-	//command = CRC3(command);
-	//int a = 2+3;
-	DDRB = 0xFF;
- 136:	8f ef       	ldi	r24, 0xFF	; 255
- 138:	87 bb       	out	0x17, r24	; 23
-	TOS = 0x80;
- 13a:	80 e8       	ldi	r24, 0x80	; 128
- 13c:	80 93 00 01 	sts	0x0100, r24	; 0x800100 <__DATA_REGION_ORIGIN__>
-	unsigned char input = 0x80;
-	PORTB = input;
- 140:	88 bb       	out	0x18, r24	; 24
-	input = CRC_CHECK11(input);
- 142:	b5 df       	rcall	.-150    	; 0xae <CRC_CHECK11>
-	PORTB = input;
- 144:	88 bb       	out	0x18, r24	; 24
-	//while (1) {
-	//	PORTB = input;
-	//}
+	SYS_CONFIG();
+ 13e:	ce df       	rcall	.-100    	; 0xdc <SYS_CONFIG>
+	INIT();
+ 140:	f4 df       	rcall	.-24     	; 0x12a <INIT>
+ 142:	85 b7       	in	r24, 0x35	; 53
 	
- }
- 146:	80 e0       	ldi	r24, 0x00	; 0
- 148:	90 e0       	ldi	r25, 0x00	; 0
- 14a:	08 95       	ret
+	while(1){
+		sleep_enable(); // arm sleep mode
+ 144:	80 62       	ori	r24, 0x20	; 32
+ 146:	85 bf       	out	0x35, r24	; 53
+ 148:	78 94       	sei
+		sei(); // global interrupt enable
+ 14a:	88 95       	sleep
+		sleep_cpu(); // put CPU to sleep
+ 14c:	fa cf       	rjmp	.-12     	; 0x142 <main+0x4>
 
-0000014c <_exit>:
- 14c:	f8 94       	cli
+0000014e <_exit>:
+ 14e:	f8 94       	cli
 
-0000014e <__stop_program>:
- 14e:	ff cf       	rjmp	.-2      	; 0x14e <__stop_program>
+00000150 <__stop_program>:
+ 150:	ff cf       	rjmp	.-2      	; 0x150 <__stop_program>

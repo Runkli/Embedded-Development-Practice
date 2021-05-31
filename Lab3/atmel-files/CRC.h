@@ -30,7 +30,7 @@ unsigned char CRC_CHECK3(unsigned char command) {
 
 unsigned char CRC_CHECK11(unsigned char command) {
 	unsigned char data = TOS;
-	unsigned char org_com = command, org_dat = data, temp;
+	unsigned char temp;
 	
 	command = command & 0xE0;// isolate first 3 bits, 11100000
 	//data ready
