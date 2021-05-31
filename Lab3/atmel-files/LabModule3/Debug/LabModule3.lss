@@ -3,31 +3,31 @@ LabModule3.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .data         00000000  00800100  00800100  000001c6  2**0
+  0 .data         00000000  00800100  00800100  00000596  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  1 .text         00000152  00000000  00000000  00000074  2**1
+  1 .text         00000522  00000000  00000000  00000074  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .bss          00000002  00800100  00800100  000001c6  2**0
+  2 .bss          00000410  00800100  00800100  00000596  2**0
                   ALLOC
-  3 .comment      00000030  00000000  00000000  000001c6  2**0
+  3 .comment      00000030  00000000  00000000  00000596  2**0
                   CONTENTS, READONLY
-  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  000001f8  2**2
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  000005c8  2**2
                   CONTENTS, READONLY
-  5 .debug_aranges 00000088  00000000  00000000  00000234  2**0
+  5 .debug_aranges 000000a0  00000000  00000000  00000604  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   00000cfd  00000000  00000000  000002bc  2**0
+  6 .debug_info   00000f6b  00000000  00000000  000006a4  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 00000930  00000000  00000000  00000fb9  2**0
+  7 .debug_abbrev 0000094b  00000000  00000000  0000160f  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   000005db  00000000  00000000  000018e9  2**0
+  8 .debug_line   0000075e  00000000  00000000  00001f5a  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  000000fc  00000000  00000000  00001ec4  2**2
+  9 .debug_frame  00000210  00000000  00000000  000026b8  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    0000055e  00000000  00000000  00001fc0  2**0
+ 10 .debug_str    00000629  00000000  00000000  000028c8  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    0000034a  00000000  00000000  0000251e  2**0
+ 11 .debug_loc    00000714  00000000  00000000  00002ef1  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00000090  00000000  00000000  00002868  2**0
+ 12 .debug_ranges 000000a8  00000000  00000000  00003605  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -69,11 +69,11 @@ Disassembly of section .text:
   42:	00 00       	nop
   44:	33 c0       	rjmp	.+102    	; 0xac <__bad_interrupt>
   46:	00 00       	nop
-  48:	31 c0       	rjmp	.+98     	; 0xac <__bad_interrupt>
+  48:	5a c1       	rjmp	.+692    	; 0x2fe <__vector_18>
   4a:	00 00       	nop
   4c:	2f c0       	rjmp	.+94     	; 0xac <__bad_interrupt>
   4e:	00 00       	nop
-  50:	2d c0       	rjmp	.+90     	; 0xac <__bad_interrupt>
+  50:	ad c1       	rjmp	.+858    	; 0x3ac <__vector_20>
   52:	00 00       	nop
   54:	2b c0       	rjmp	.+86     	; 0xac <__bad_interrupt>
   56:	00 00       	nop
@@ -93,7 +93,7 @@ Disassembly of section .text:
   72:	00 00       	nop
   74:	1b c0       	rjmp	.+54     	; 0xac <__bad_interrupt>
   76:	00 00       	nop
-  78:	19 c0       	rjmp	.+50     	; 0xac <__bad_interrupt>
+  78:	d5 c1       	rjmp	.+938    	; 0x424 <__vector_30>
   7a:	00 00       	nop
   7c:	17 c0       	rjmp	.+46     	; 0xac <__bad_interrupt>
   7e:	00 00       	nop
@@ -113,7 +113,7 @@ Disassembly of section .text:
   96:	cd bf       	out	0x3d, r28	; 61
 
 00000098 <__do_clear_bss>:
-  98:	21 e0       	ldi	r18, 0x01	; 1
+  98:	25 e0       	ldi	r18, 0x05	; 5
   9a:	a0 e0       	ldi	r26, 0x00	; 0
   9c:	b1 e0       	ldi	r27, 0x01	; 1
   9e:	01 c0       	rjmp	.+2      	; 0xa2 <.do_clear_bss_start>
@@ -122,11 +122,11 @@ Disassembly of section .text:
   a0:	1d 92       	st	X+, r1
 
 000000a2 <.do_clear_bss_start>:
-  a2:	a2 30       	cpi	r26, 0x02	; 2
+  a2:	a0 31       	cpi	r26, 0x10	; 16
   a4:	b2 07       	cpc	r27, r18
   a6:	e1 f7       	brne	.-8      	; 0xa0 <.do_clear_bss_loop>
-  a8:	4a d0       	rcall	.+148    	; 0x13e <main>
-  aa:	51 c0       	rjmp	.+162    	; 0x14e <_exit>
+  a8:	30 d2       	rcall	.+1120   	; 0x50a <main>
+  aa:	39 c2       	rjmp	.+1138   	; 0x51e <_exit>
 
 000000ac <__bad_interrupt>:
   ac:	a9 cf       	rjmp	.-174    	; 0x0 <__vectors>
@@ -134,10 +134,10 @@ Disassembly of section .text:
 000000ae <CRC3>:
 }
 
-
-// incomplete
-void TREAT_USER_INPUT(){
-	SERVICE_READOUT();
+void USER_TRANSMIT_START(const char string[]){
+	bluetoothSending = 1;
+	strcpy(user_output_buffer, string);
+	USER_TRANSMIT('\n');
   ae:	98 2f       	mov	r25, r24
   b0:	90 7e       	andi	r25, 0xE0	; 224
   b2:	96 95       	lsr	r25
@@ -162,74 +162,546 @@ void TREAT_USER_INPUT(){
   d8:	89 2b       	or	r24, r25
   da:	08 95       	ret
 
-000000dc <SYS_CONFIG>:
-  dc:	80 e8       	ldi	r24, 0x80	; 128
-  de:	85 bf       	out	0x35, r24	; 53
-  e0:	26 e0       	ldi	r18, 0x06	; 6
-  e2:	20 93 95 00 	sts	0x0095, r18	; 0x800095 <__TEXT_REGION_LENGTH__+0x7e0095>
-  e6:	10 92 90 00 	sts	0x0090, r1	; 0x800090 <__TEXT_REGION_LENGTH__+0x7e0090>
-  ea:	93 e3       	ldi	r25, 0x33	; 51
-  ec:	99 b9       	out	0x09, r25	; 9
-  ee:	88 ed       	ldi	r24, 0xD8	; 216
-  f0:	8a b9       	out	0x0a, r24	; 10
-  f2:	20 93 9d 00 	sts	0x009D, r18	; 0x80009d <__TEXT_REGION_LENGTH__+0x7e009d>
-  f6:	10 92 98 00 	sts	0x0098, r1	; 0x800098 <__TEXT_REGION_LENGTH__+0x7e0098>
-  fa:	90 93 99 00 	sts	0x0099, r25	; 0x800099 <__TEXT_REGION_LENGTH__+0x7e0099>
-  fe:	80 93 9a 00 	sts	0x009A, r24	; 0x80009a <__TEXT_REGION_LENGTH__+0x7e009a>
- 102:	78 94       	sei
- 104:	08 95       	ret
+000000dc <CRC_CHECK3>:
+  dc:	cf 93       	push	r28
+  de:	c8 2f       	mov	r28, r24
+  e0:	e6 df       	rcall	.-52     	; 0xae <CRC3>
+  e2:	c8 17       	cp	r28, r24
+  e4:	11 f0       	breq	.+4      	; 0xea <CRC_CHECK3+0xe>
+  e6:	80 e0       	ldi	r24, 0x00	; 0
+  e8:	01 c0       	rjmp	.+2      	; 0xec <CRC_CHECK3+0x10>
+  ea:	8f ef       	ldi	r24, 0xFF	; 255
+  ec:	cf 91       	pop	r28
+  ee:	08 95       	ret
 
-00000106 <SENSOR_TRANSMIT>:
- 106:	d3 df       	rcall	.-90     	; 0xae <CRC3>
- 108:	09 c0       	rjmp	.+18     	; 0x11c <SENSOR_TRANSMIT+0x16>
- 10a:	2f ef       	ldi	r18, 0xFF	; 255
- 10c:	30 e7       	ldi	r19, 0x70	; 112
- 10e:	92 e0       	ldi	r25, 0x02	; 2
- 110:	21 50       	subi	r18, 0x01	; 1
- 112:	30 40       	sbci	r19, 0x00	; 0
- 114:	90 40       	sbci	r25, 0x00	; 0
- 116:	e1 f7       	brne	.-8      	; 0x110 <SENSOR_TRANSMIT+0xa>
- 118:	00 c0       	rjmp	.+0      	; 0x11a <SENSOR_TRANSMIT+0x14>
- 11a:	00 00       	nop
- 11c:	90 91 9b 00 	lds	r25, 0x009B	; 0x80009b <__TEXT_REGION_LENGTH__+0x7e009b>
- 120:	95 ff       	sbrs	r25, 5
- 122:	f3 cf       	rjmp	.-26     	; 0x10a <SENSOR_TRANSMIT+0x4>
- 124:	80 93 9c 00 	sts	0x009C, r24	; 0x80009c <__TEXT_REGION_LENGTH__+0x7e009c>
- 128:	08 95       	ret
+000000f0 <CRC_CHECK11>:
+  f0:	60 91 05 01 	lds	r22, 0x0105	; 0x800105 <TOS>
+  f4:	98 2f       	mov	r25, r24
+  f6:	90 7e       	andi	r25, 0xE0	; 224
+  f8:	26 2f       	mov	r18, r22
+  fa:	22 95       	swap	r18
+  fc:	22 0f       	add	r18, r18
+  fe:	22 0f       	add	r18, r18
+ 100:	20 7c       	andi	r18, 0xC0	; 192
+ 102:	66 95       	lsr	r22
+ 104:	66 95       	lsr	r22
+ 106:	60 32       	cpi	r22, 0x20	; 32
+ 108:	10 f0       	brcs	.+4      	; 0x10e <CRC_CHECK11+0x1e>
+ 10a:	85 e3       	ldi	r24, 0x35	; 53
+ 10c:	68 27       	eor	r22, r24
+ 10e:	70 e0       	ldi	r23, 0x00	; 0
+ 110:	66 0f       	add	r22, r22
+ 112:	77 1f       	adc	r23, r23
+ 114:	42 2f       	mov	r20, r18
+ 116:	44 1f       	adc	r20, r20
+ 118:	44 27       	eor	r20, r20
+ 11a:	44 1f       	adc	r20, r20
+ 11c:	64 2b       	or	r22, r20
+ 11e:	22 0f       	add	r18, r18
+ 120:	60 32       	cpi	r22, 0x20	; 32
+ 122:	10 f0       	brcs	.+4      	; 0x128 <CRC_CHECK11+0x38>
+ 124:	85 e3       	ldi	r24, 0x35	; 53
+ 126:	68 27       	eor	r22, r24
+ 128:	46 2f       	mov	r20, r22
+ 12a:	50 e0       	ldi	r21, 0x00	; 0
+ 12c:	44 0f       	add	r20, r20
+ 12e:	55 1f       	adc	r21, r21
+ 130:	22 95       	swap	r18
+ 132:	26 95       	lsr	r18
+ 134:	26 95       	lsr	r18
+ 136:	23 70       	andi	r18, 0x03	; 3
+ 138:	24 2b       	or	r18, r20
+ 13a:	20 32       	cpi	r18, 0x20	; 32
+ 13c:	10 f0       	brcs	.+4      	; 0x142 <CRC_CHECK11+0x52>
+ 13e:	85 e3       	ldi	r24, 0x35	; 53
+ 140:	28 27       	eor	r18, r24
+ 142:	60 e0       	ldi	r22, 0x00	; 0
+ 144:	70 e0       	ldi	r23, 0x00	; 0
+ 146:	0f c0       	rjmp	.+30     	; 0x166 <CRC_CHECK11+0x76>
+ 148:	30 e0       	ldi	r19, 0x00	; 0
+ 14a:	22 0f       	add	r18, r18
+ 14c:	33 1f       	adc	r19, r19
+ 14e:	49 2f       	mov	r20, r25
+ 150:	44 1f       	adc	r20, r20
+ 152:	44 27       	eor	r20, r20
+ 154:	44 1f       	adc	r20, r20
+ 156:	24 2b       	or	r18, r20
+ 158:	99 0f       	add	r25, r25
+ 15a:	20 32       	cpi	r18, 0x20	; 32
+ 15c:	10 f0       	brcs	.+4      	; 0x162 <CRC_CHECK11+0x72>
+ 15e:	85 e3       	ldi	r24, 0x35	; 53
+ 160:	28 27       	eor	r18, r24
+ 162:	6f 5f       	subi	r22, 0xFF	; 255
+ 164:	7f 4f       	sbci	r23, 0xFF	; 255
+ 166:	69 30       	cpi	r22, 0x09	; 9
+ 168:	71 05       	cpc	r23, r1
+ 16a:	74 f3       	brlt	.-36     	; 0x148 <CRC_CHECK11+0x58>
+ 16c:	82 2f       	mov	r24, r18
+ 16e:	08 95       	ret
 
-0000012a <INIT>:
- 12a:	80 e0       	ldi	r24, 0x00	; 0
- 12c:	ec df       	rcall	.-40     	; 0x106 <SENSOR_TRANSMIT>
- 12e:	80 e0       	ldi	r24, 0x00	; 0
- 130:	be df       	rcall	.-132    	; 0xae <CRC3>
- 132:	80 93 01 01 	sts	0x0101, r24	; 0x800101 <TOS>
- 136:	81 e0       	ldi	r24, 0x01	; 1
- 138:	80 93 00 01 	sts	0x0100, r24	; 0x800100 <__DATA_REGION_ORIGIN__>
- 13c:	08 95       	ret
+00000170 <rollDataPointer>:
+ 170:	80 91 06 01 	lds	r24, 0x0106	; 0x800106 <dataPointer>
+ 174:	90 91 07 01 	lds	r25, 0x0107	; 0x800107 <dataPointer+0x1>
+ 178:	01 96       	adiw	r24, 0x01	; 1
+ 17a:	90 93 07 01 	sts	0x0107, r25	; 0x800107 <dataPointer+0x1>
+ 17e:	80 93 06 01 	sts	0x0106, r24	; 0x800106 <dataPointer>
+ 182:	80 35       	cpi	r24, 0x50	; 80
+ 184:	94 41       	sbci	r25, 0x14	; 20
+ 186:	20 f0       	brcs	.+8      	; 0x190 <rollDataPointer+0x20>
+ 188:	10 92 07 01 	sts	0x0107, r1	; 0x800107 <dataPointer+0x1>
+ 18c:	10 92 06 01 	sts	0x0106, r1	; 0x800106 <dataPointer>
+ 190:	08 95       	ret
 
-0000013e <main>:
+00000192 <TRANSMIT>:
+ 192:	83 b9       	out	0x03, r24	; 3
+ 194:	08 95       	ret
+
+00000196 <SERVICE_READOUT>:
+ 196:	88 23       	and	r24, r24
+ 198:	89 f0       	breq	.+34     	; 0x1bc <SERVICE_READOUT+0x26>
+ 19a:	1a c0       	rjmp	.+52     	; 0x1d0 <SERVICE_READOUT+0x3a>
+ 19c:	fc 01       	movw	r30, r24
+ 19e:	e8 5f       	subi	r30, 0xF8	; 248
+ 1a0:	fc 4f       	sbci	r31, 0xFC	; 252
+ 1a2:	20 81       	ld	r18, Z
+ 1a4:	28 bb       	out	0x18, r18	; 24
+ 1a6:	2f ef       	ldi	r18, 0xFF	; 255
+ 1a8:	39 e6       	ldi	r19, 0x69	; 105
+ 1aa:	48 e1       	ldi	r20, 0x18	; 24
+ 1ac:	21 50       	subi	r18, 0x01	; 1
+ 1ae:	30 40       	sbci	r19, 0x00	; 0
+ 1b0:	40 40       	sbci	r20, 0x00	; 0
+ 1b2:	e1 f7       	brne	.-8      	; 0x1ac <SERVICE_READOUT+0x16>
+ 1b4:	00 c0       	rjmp	.+0      	; 0x1b6 <SERVICE_READOUT+0x20>
+ 1b6:	00 00       	nop
+ 1b8:	01 96       	adiw	r24, 0x01	; 1
+ 1ba:	02 c0       	rjmp	.+4      	; 0x1c0 <SERVICE_READOUT+0x2a>
+ 1bc:	80 e0       	ldi	r24, 0x00	; 0
+ 1be:	90 e0       	ldi	r25, 0x00	; 0
+ 1c0:	20 91 06 01 	lds	r18, 0x0106	; 0x800106 <dataPointer>
+ 1c4:	30 91 07 01 	lds	r19, 0x0107	; 0x800107 <dataPointer+0x1>
+ 1c8:	82 17       	cp	r24, r18
+ 1ca:	93 07       	cpc	r25, r19
+ 1cc:	38 f3       	brcs	.-50     	; 0x19c <SERVICE_READOUT+0x6>
+ 1ce:	08 95       	ret
+ 1d0:	81 30       	cpi	r24, 0x01	; 1
+ 1d2:	41 f4       	brne	.+16     	; 0x1e4 <SERVICE_READOUT+0x4e>
+ 1d4:	e0 91 06 01 	lds	r30, 0x0106	; 0x800106 <dataPointer>
+ 1d8:	f0 91 07 01 	lds	r31, 0x0107	; 0x800107 <dataPointer+0x1>
+ 1dc:	e9 5f       	subi	r30, 0xF9	; 249
+ 1de:	fc 4f       	sbci	r31, 0xFC	; 252
+ 1e0:	80 81       	ld	r24, Z
+ 1e2:	88 bb       	out	0x18, r24	; 24
+ 1e4:	08 95       	ret
+
+000001e6 <SYS_CONFIG>:
+ 1e6:	80 e8       	ldi	r24, 0x80	; 128
+ 1e8:	85 bf       	out	0x35, r24	; 53
+ 1ea:	96 e0       	ldi	r25, 0x06	; 6
+ 1ec:	90 93 95 00 	sts	0x0095, r25	; 0x800095 <__TEXT_REGION_LENGTH__+0x7e0095>
+ 1f0:	10 92 90 00 	sts	0x0090, r1	; 0x800090 <__TEXT_REGION_LENGTH__+0x7e0090>
+ 1f4:	83 e3       	ldi	r24, 0x33	; 51
+ 1f6:	89 b9       	out	0x09, r24	; 9
+ 1f8:	28 ed       	ldi	r18, 0xD8	; 216
+ 1fa:	2a b9       	out	0x0a, r18	; 10
+ 1fc:	90 93 9d 00 	sts	0x009D, r25	; 0x80009d <__TEXT_REGION_LENGTH__+0x7e009d>
+ 200:	10 92 98 00 	sts	0x0098, r1	; 0x800098 <__TEXT_REGION_LENGTH__+0x7e0098>
+ 204:	80 93 99 00 	sts	0x0099, r24	; 0x800099 <__TEXT_REGION_LENGTH__+0x7e0099>
+ 208:	88 e9       	ldi	r24, 0x98	; 152
+ 20a:	80 93 9a 00 	sts	0x009A, r24	; 0x80009a <__TEXT_REGION_LENGTH__+0x7e009a>
+ 20e:	08 95       	ret
+
+00000210 <LOG_REQUEST_FUNCTION>:
+ 210:	e0 91 06 01 	lds	r30, 0x0106	; 0x800106 <dataPointer>
+ 214:	f0 91 07 01 	lds	r31, 0x0107	; 0x800107 <dataPointer+0x1>
+ 218:	e8 5f       	subi	r30, 0xF8	; 248
+ 21a:	fc 4f       	sbci	r31, 0xFC	; 252
+ 21c:	80 83       	st	Z, r24
+ 21e:	a8 cf       	rjmp	.-176    	; 0x170 <rollDataPointer>
+ 220:	08 95       	ret
+
+00000222 <SENSOR_TRANSMIT>:
+ 222:	09 c0       	rjmp	.+18     	; 0x236 <SENSOR_TRANSMIT+0x14>
+ 224:	2f ef       	ldi	r18, 0xFF	; 255
+ 226:	30 e7       	ldi	r19, 0x70	; 112
+ 228:	92 e0       	ldi	r25, 0x02	; 2
+ 22a:	21 50       	subi	r18, 0x01	; 1
+ 22c:	30 40       	sbci	r19, 0x00	; 0
+ 22e:	90 40       	sbci	r25, 0x00	; 0
+ 230:	e1 f7       	brne	.-8      	; 0x22a <SENSOR_TRANSMIT+0x8>
+ 232:	00 c0       	rjmp	.+0      	; 0x234 <SENSOR_TRANSMIT+0x12>
+ 234:	00 00       	nop
+ 236:	90 91 9b 00 	lds	r25, 0x009B	; 0x80009b <__TEXT_REGION_LENGTH__+0x7e009b>
+ 23a:	95 ff       	sbrs	r25, 5
+ 23c:	f3 cf       	rjmp	.-26     	; 0x224 <SENSOR_TRANSMIT+0x2>
+ 23e:	80 93 9c 00 	sts	0x009C, r24	; 0x80009c <__TEXT_REGION_LENGTH__+0x7e009c>
+ 242:	08 95       	ret
+
+00000244 <USER_TRANSMIT>:
+ 244:	09 c0       	rjmp	.+18     	; 0x258 <USER_TRANSMIT+0x14>
+ 246:	2f ef       	ldi	r18, 0xFF	; 255
+ 248:	30 e7       	ldi	r19, 0x70	; 112
+ 24a:	92 e0       	ldi	r25, 0x02	; 2
+ 24c:	21 50       	subi	r18, 0x01	; 1
+ 24e:	30 40       	sbci	r19, 0x00	; 0
+ 250:	90 40       	sbci	r25, 0x00	; 0
+ 252:	e1 f7       	brne	.-8      	; 0x24c <USER_TRANSMIT+0x8>
+ 254:	00 c0       	rjmp	.+0      	; 0x256 <USER_TRANSMIT+0x12>
+ 256:	00 00       	nop
+ 258:	5d 9b       	sbis	0x0b, 5	; 11
+ 25a:	f5 cf       	rjmp	.-22     	; 0x246 <USER_TRANSMIT+0x2>
+ 25c:	8c b9       	out	0x0c, r24	; 12
+ 25e:	08 95       	ret
+
+00000260 <INIT>:
+ 260:	80 e0       	ldi	r24, 0x00	; 0
+ 262:	25 df       	rcall	.-438    	; 0xae <CRC3>
+ 264:	80 93 05 01 	sts	0x0105, r24	; 0x800105 <TOS>
+ 268:	dc df       	rcall	.-72     	; 0x222 <SENSOR_TRANSMIT>
+ 26a:	81 e0       	ldi	r24, 0x01	; 1
+ 26c:	80 93 04 01 	sts	0x0104, r24	; 0x800104 <TOS_STATE>
+ 270:	08 95       	ret
+
+00000272 <TREAT_SENSOR_DATA>:
+ 272:	cf 93       	push	r28
+ 274:	df 93       	push	r29
+ 276:	c8 2f       	mov	r28, r24
+ 278:	d4 df       	rcall	.-88     	; 0x222 <SENSOR_TRANSMIT>
+ 27a:	cc 23       	and	r28, r28
+ 27c:	44 f4       	brge	.+16     	; 0x28e <TREAT_SENSOR_DATA+0x1c>
+ 27e:	c0 93 05 01 	sts	0x0105, r28	; 0x800105 <TOS>
+ 282:	8c ec       	ldi	r24, 0xCC	; 204
+ 284:	ce df       	rcall	.-100    	; 0x222 <SENSOR_TRANSMIT>
+ 286:	81 e0       	ldi	r24, 0x01	; 1
+ 288:	80 93 04 01 	sts	0x0104, r24	; 0x800104 <TOS_STATE>
+ 28c:	35 c0       	rjmp	.+106    	; 0x2f8 <TREAT_SENSOR_DATA+0x86>
+ 28e:	d0 91 05 01 	lds	r29, 0x0105	; 0x800105 <TOS>
+ 292:	dd 23       	and	r29, r29
+ 294:	cc f4       	brge	.+50     	; 0x2c8 <TREAT_SENSOR_DATA+0x56>
+ 296:	8c 2f       	mov	r24, r28
+ 298:	2b df       	rcall	.-426    	; 0xf0 <CRC_CHECK11>
+ 29a:	8f 3f       	cpi	r24, 0xFF	; 255
+ 29c:	69 f4       	brne	.+26     	; 0x2b8 <TREAT_SENSOR_DATA+0x46>
+ 29e:	c0 7e       	andi	r28, 0xE0	; 224
+ 2a0:	c0 32       	cpi	r28, 0x20	; 32
+ 2a2:	41 f4       	brne	.+16     	; 0x2b4 <TREAT_SENSOR_DATA+0x42>
+ 2a4:	8d 2f       	mov	r24, r29
+ 2a6:	b4 df       	rcall	.-152    	; 0x210 <LOG_REQUEST_FUNCTION>
+ 2a8:	10 92 04 01 	sts	0x0104, r1	; 0x800104 <TOS_STATE>
+ 2ac:	80 e4       	ldi	r24, 0x40	; 64
+ 2ae:	ff de       	rcall	.-514    	; 0xae <CRC3>
+ 2b0:	b8 df       	rcall	.-144    	; 0x222 <SENSOR_TRANSMIT>
+ 2b2:	22 c0       	rjmp	.+68     	; 0x2f8 <TREAT_SENSOR_DATA+0x86>
+ 2b4:	d5 df       	rcall	.-86     	; 0x260 <INIT>
+ 2b6:	20 c0       	rjmp	.+64     	; 0x2f8 <TREAT_SENSOR_DATA+0x86>
+ 2b8:	10 92 04 01 	sts	0x0104, r1	; 0x800104 <TOS_STATE>
+ 2bc:	8a ea       	ldi	r24, 0xAA	; 170
+ 2be:	b1 df       	rcall	.-158    	; 0x222 <SENSOR_TRANSMIT>
+ 2c0:	80 ee       	ldi	r24, 0xE0	; 224
+ 2c2:	f5 de       	rcall	.-534    	; 0xae <CRC3>
+ 2c4:	ae df       	rcall	.-164    	; 0x222 <SENSOR_TRANSMIT>
+ 2c6:	18 c0       	rjmp	.+48     	; 0x2f8 <TREAT_SENSOR_DATA+0x86>
+ 2c8:	8c 2f       	mov	r24, r28
+ 2ca:	08 df       	rcall	.-496    	; 0xdc <CRC_CHECK3>
+ 2cc:	8f 3f       	cpi	r24, 0xFF	; 255
+ 2ce:	79 f4       	brne	.+30     	; 0x2ee <TREAT_SENSOR_DATA+0x7c>
+ 2d0:	c0 7e       	andi	r28, 0xE0	; 224
+ 2d2:	c0 34       	cpi	r28, 0x40	; 64
+ 2d4:	19 f4       	brne	.+6      	; 0x2dc <TREAT_SENSOR_DATA+0x6a>
+ 2d6:	10 92 04 01 	sts	0x0104, r1	; 0x800104 <TOS_STATE>
+ 2da:	0e c0       	rjmp	.+28     	; 0x2f8 <TREAT_SENSOR_DATA+0x86>
+ 2dc:	c0 3e       	cpi	r28, 0xE0	; 224
+ 2de:	61 f4       	brne	.+24     	; 0x2f8 <TREAT_SENSOR_DATA+0x86>
+ 2e0:	80 91 04 01 	lds	r24, 0x0104	; 0x800104 <TOS_STATE>
+ 2e4:	81 30       	cpi	r24, 0x01	; 1
+ 2e6:	41 f4       	brne	.+16     	; 0x2f8 <TREAT_SENSOR_DATA+0x86>
+ 2e8:	8d 2f       	mov	r24, r29
+ 2ea:	53 df       	rcall	.-346    	; 0x192 <TRANSMIT>
+ 2ec:	05 c0       	rjmp	.+10     	; 0x2f8 <TREAT_SENSOR_DATA+0x86>
+ 2ee:	8b eb       	ldi	r24, 0xBB	; 187
+ 2f0:	98 df       	rcall	.-208    	; 0x222 <SENSOR_TRANSMIT>
+ 2f2:	80 ee       	ldi	r24, 0xE0	; 224
+ 2f4:	dc de       	rcall	.-584    	; 0xae <CRC3>
+ 2f6:	95 df       	rcall	.-214    	; 0x222 <SENSOR_TRANSMIT>
+ 2f8:	df 91       	pop	r29
+ 2fa:	cf 91       	pop	r28
+ 2fc:	08 95       	ret
+
+000002fe <__vector_18>:
+ 2fe:	1f 92       	push	r1
+ 300:	0f 92       	push	r0
+ 302:	0f b6       	in	r0, 0x3f	; 63
+ 304:	0f 92       	push	r0
+ 306:	11 24       	eor	r1, r1
+ 308:	0b b6       	in	r0, 0x3b	; 59
+ 30a:	0f 92       	push	r0
+ 30c:	2f 93       	push	r18
+ 30e:	3f 93       	push	r19
+ 310:	4f 93       	push	r20
+ 312:	5f 93       	push	r21
+ 314:	6f 93       	push	r22
+ 316:	7f 93       	push	r23
+ 318:	8f 93       	push	r24
+ 31a:	9f 93       	push	r25
+ 31c:	af 93       	push	r26
+ 31e:	bf 93       	push	r27
+ 320:	ef 93       	push	r30
+ 322:	ff 93       	push	r31
+ 324:	85 b7       	in	r24, 0x35	; 53
+ 326:	8f 7d       	andi	r24, 0xDF	; 223
+ 328:	85 bf       	out	0x35, r24	; 53
+ 32a:	e0 91 03 01 	lds	r30, 0x0103	; 0x800103 <user_input_buffer_ptr>
+ 32e:	81 e0       	ldi	r24, 0x01	; 1
+ 330:	8e 0f       	add	r24, r30
+ 332:	80 93 03 01 	sts	0x0103, r24	; 0x800103 <user_input_buffer_ptr>
+ 336:	f0 e0       	ldi	r31, 0x00	; 0
+ 338:	9c b1       	in	r25, 0x0c	; 12
+ 33a:	e6 5f       	subi	r30, 0xF6	; 246
+ 33c:	fe 4f       	sbci	r31, 0xFE	; 254
+ 33e:	90 83       	st	Z, r25
+ 340:	90 e0       	ldi	r25, 0x00	; 0
+ 342:	fc 01       	movw	r30, r24
+ 344:	e7 5f       	subi	r30, 0xF7	; 247
+ 346:	fe 4f       	sbci	r31, 0xFE	; 254
+ 348:	20 81       	ld	r18, Z
+ 34a:	2e 32       	cpi	r18, 0x2E	; 46
+ 34c:	e1 f4       	brne	.+56     	; 0x386 <__vector_18+0x88>
+ 34e:	fc 01       	movw	r30, r24
+ 350:	e8 5f       	subi	r30, 0xF8	; 248
+ 352:	fe 4f       	sbci	r31, 0xFE	; 254
+ 354:	80 81       	ld	r24, Z
+ 356:	82 33       	cpi	r24, 0x32	; 50
+ 358:	61 f0       	breq	.+24     	; 0x372 <__vector_18+0x74>
+ 35a:	18 f4       	brcc	.+6      	; 0x362 <__vector_18+0x64>
+ 35c:	81 33       	cpi	r24, 0x31	; 49
+ 35e:	31 f0       	breq	.+12     	; 0x36c <__vector_18+0x6e>
+ 360:	10 c0       	rjmp	.+32     	; 0x382 <__vector_18+0x84>
+ 362:	83 33       	cpi	r24, 0x33	; 51
+ 364:	49 f0       	breq	.+18     	; 0x378 <__vector_18+0x7a>
+ 366:	84 33       	cpi	r24, 0x34	; 52
+ 368:	51 f0       	breq	.+20     	; 0x37e <__vector_18+0x80>
+ 36a:	0b c0       	rjmp	.+22     	; 0x382 <__vector_18+0x84>
+ 36c:	80 e0       	ldi	r24, 0x00	; 0
+ 36e:	13 df       	rcall	.-474    	; 0x196 <SERVICE_READOUT>
+ 370:	08 c0       	rjmp	.+16     	; 0x382 <__vector_18+0x84>
+ 372:	81 e0       	ldi	r24, 0x01	; 1
+ 374:	10 df       	rcall	.-480    	; 0x196 <SERVICE_READOUT>
+ 376:	05 c0       	rjmp	.+10     	; 0x382 <__vector_18+0x84>
+ 378:	36 df       	rcall	.-404    	; 0x1e6 <SYS_CONFIG>
+ 37a:	72 df       	rcall	.-284    	; 0x260 <INIT>
+ 37c:	02 c0       	rjmp	.+4      	; 0x382 <__vector_18+0x84>
+ 37e:	8f ef       	ldi	r24, 0xFF	; 255
+ 380:	61 df       	rcall	.-318    	; 0x244 <USER_TRANSMIT>
+ 382:	10 92 03 01 	sts	0x0103, r1	; 0x800103 <user_input_buffer_ptr>
+ 386:	ff 91       	pop	r31
+ 388:	ef 91       	pop	r30
+ 38a:	bf 91       	pop	r27
+ 38c:	af 91       	pop	r26
+ 38e:	9f 91       	pop	r25
+ 390:	8f 91       	pop	r24
+ 392:	7f 91       	pop	r23
+ 394:	6f 91       	pop	r22
+ 396:	5f 91       	pop	r21
+ 398:	4f 91       	pop	r20
+ 39a:	3f 91       	pop	r19
+ 39c:	2f 91       	pop	r18
+ 39e:	0f 90       	pop	r0
+ 3a0:	0b be       	out	0x3b, r0	; 59
+ 3a2:	0f 90       	pop	r0
+ 3a4:	0f be       	out	0x3f, r0	; 63
+ 3a6:	0f 90       	pop	r0
+ 3a8:	1f 90       	pop	r1
+ 3aa:	18 95       	reti
+
+000003ac <__vector_20>:
+ 3ac:	1f 92       	push	r1
+ 3ae:	0f 92       	push	r0
+ 3b0:	0f b6       	in	r0, 0x3f	; 63
+ 3b2:	0f 92       	push	r0
+ 3b4:	11 24       	eor	r1, r1
+ 3b6:	0b b6       	in	r0, 0x3b	; 59
+ 3b8:	0f 92       	push	r0
+ 3ba:	2f 93       	push	r18
+ 3bc:	3f 93       	push	r19
+ 3be:	4f 93       	push	r20
+ 3c0:	5f 93       	push	r21
+ 3c2:	6f 93       	push	r22
+ 3c4:	7f 93       	push	r23
+ 3c6:	8f 93       	push	r24
+ 3c8:	9f 93       	push	r25
+ 3ca:	af 93       	push	r26
+ 3cc:	bf 93       	push	r27
+ 3ce:	ef 93       	push	r30
+ 3d0:	ff 93       	push	r31
+ 3d2:	90 91 02 01 	lds	r25, 0x0102	; 0x800102 <user_output_buffer_ptr>
+ 3d6:	e9 2f       	mov	r30, r25
+ 3d8:	f0 e0       	ldi	r31, 0x00	; 0
+ 3da:	e7 5f       	subi	r30, 0xF7	; 247
+ 3dc:	fd 4f       	sbci	r31, 0xFD	; 253
+ 3de:	80 81       	ld	r24, Z
+ 3e0:	8e 32       	cpi	r24, 0x2E	; 46
+ 3e2:	49 f0       	breq	.+18     	; 0x3f6 <__vector_20+0x4a>
+ 3e4:	20 91 01 01 	lds	r18, 0x0101	; 0x800101 <bluetoothSending>
+ 3e8:	22 23       	and	r18, r18
+ 3ea:	29 f0       	breq	.+10     	; 0x3f6 <__vector_20+0x4a>
+ 3ec:	9f 5f       	subi	r25, 0xFF	; 255
+ 3ee:	90 93 02 01 	sts	0x0102, r25	; 0x800102 <user_output_buffer_ptr>
+ 3f2:	28 df       	rcall	.-432    	; 0x244 <USER_TRANSMIT>
+ 3f4:	04 c0       	rjmp	.+8      	; 0x3fe <__vector_20+0x52>
+ 3f6:	10 92 02 01 	sts	0x0102, r1	; 0x800102 <user_output_buffer_ptr>
+ 3fa:	10 92 01 01 	sts	0x0101, r1	; 0x800101 <bluetoothSending>
+ 3fe:	ff 91       	pop	r31
+ 400:	ef 91       	pop	r30
+ 402:	bf 91       	pop	r27
+ 404:	af 91       	pop	r26
+ 406:	9f 91       	pop	r25
+ 408:	8f 91       	pop	r24
+ 40a:	7f 91       	pop	r23
+ 40c:	6f 91       	pop	r22
+ 40e:	5f 91       	pop	r21
+ 410:	4f 91       	pop	r20
+ 412:	3f 91       	pop	r19
+ 414:	2f 91       	pop	r18
+ 416:	0f 90       	pop	r0
+ 418:	0b be       	out	0x3b, r0	; 59
+ 41a:	0f 90       	pop	r0
+ 41c:	0f be       	out	0x3f, r0	; 63
+ 41e:	0f 90       	pop	r0
+ 420:	1f 90       	pop	r1
+ 422:	18 95       	reti
+
+00000424 <__vector_30>:
+ 424:	1f 92       	push	r1
+ 426:	0f 92       	push	r0
+ 428:	0f b6       	in	r0, 0x3f	; 63
+ 42a:	0f 92       	push	r0
+ 42c:	11 24       	eor	r1, r1
+ 42e:	0b b6       	in	r0, 0x3b	; 59
+ 430:	0f 92       	push	r0
+ 432:	2f 93       	push	r18
+ 434:	3f 93       	push	r19
+ 436:	4f 93       	push	r20
+ 438:	5f 93       	push	r21
+ 43a:	6f 93       	push	r22
+ 43c:	7f 93       	push	r23
+ 43e:	8f 93       	push	r24
+ 440:	9f 93       	push	r25
+ 442:	af 93       	push	r26
+ 444:	bf 93       	push	r27
+ 446:	ef 93       	push	r30
+ 448:	ff 93       	push	r31
+ 44a:	85 b7       	in	r24, 0x35	; 53
+ 44c:	8f 7d       	andi	r24, 0xDF	; 223
+ 44e:	85 bf       	out	0x35, r24	; 53
+ 450:	80 91 00 01 	lds	r24, 0x0100	; 0x800100 <__DATA_REGION_ORIGIN__>
+ 454:	83 30       	cpi	r24, 0x03	; 3
+ 456:	10 f0       	brcs	.+4      	; 0x45c <__vector_30+0x38>
+ 458:	10 92 00 01 	sts	0x0100, r1	; 0x800100 <__DATA_REGION_ORIGIN__>
+ 45c:	e0 91 00 01 	lds	r30, 0x0100	; 0x800100 <__DATA_REGION_ORIGIN__>
+ 460:	81 e0       	ldi	r24, 0x01	; 1
+ 462:	8e 0f       	add	r24, r30
+ 464:	80 93 00 01 	sts	0x0100, r24	; 0x800100 <__DATA_REGION_ORIGIN__>
+ 468:	f0 e0       	ldi	r31, 0x00	; 0
+ 46a:	90 91 9c 00 	lds	r25, 0x009C	; 0x80009c <__TEXT_REGION_LENGTH__+0x7e009c>
+ 46e:	e8 5f       	subi	r30, 0xF8	; 248
+ 470:	fe 4f       	sbci	r31, 0xFE	; 254
+ 472:	90 83       	st	Z, r25
+ 474:	82 30       	cpi	r24, 0x02	; 2
+ 476:	b1 f5       	brne	.+108    	; 0x4e4 <__vector_30+0xc0>
+ 478:	80 91 08 01 	lds	r24, 0x0108	; 0x800108 <sensor_input_buffer>
+ 47c:	90 ed       	ldi	r25, 0xD0	; 208
+ 47e:	98 0f       	add	r25, r24
+ 480:	9a 30       	cpi	r25, 0x0A	; 10
+ 482:	18 f4       	brcc	.+6      	; 0x48a <__vector_30+0x66>
+ 484:	82 95       	swap	r24
+ 486:	80 7f       	andi	r24, 0xF0	; 240
+ 488:	14 c0       	rjmp	.+40     	; 0x4b2 <__vector_30+0x8e>
+ 48a:	9f e9       	ldi	r25, 0x9F	; 159
+ 48c:	98 0f       	add	r25, r24
+ 48e:	96 30       	cpi	r25, 0x06	; 6
+ 490:	30 f4       	brcc	.+12     	; 0x49e <__vector_30+0x7a>
+ 492:	90 e0       	ldi	r25, 0x00	; 0
+ 494:	87 55       	subi	r24, 0x57	; 87
+ 496:	91 09       	sbc	r25, r1
+ 498:	82 95       	swap	r24
+ 49a:	80 7f       	andi	r24, 0xF0	; 240
+ 49c:	0a c0       	rjmp	.+20     	; 0x4b2 <__vector_30+0x8e>
+ 49e:	9f eb       	ldi	r25, 0xBF	; 191
+ 4a0:	98 0f       	add	r25, r24
+ 4a2:	96 30       	cpi	r25, 0x06	; 6
+ 4a4:	28 f4       	brcc	.+10     	; 0x4b0 <__vector_30+0x8c>
+ 4a6:	90 e0       	ldi	r25, 0x00	; 0
+ 4a8:	c7 97       	sbiw	r24, 0x37	; 55
+ 4aa:	82 95       	swap	r24
+ 4ac:	80 7f       	andi	r24, 0xF0	; 240
+ 4ae:	01 c0       	rjmp	.+2      	; 0x4b2 <__vector_30+0x8e>
+ 4b0:	80 e0       	ldi	r24, 0x00	; 0
+ 4b2:	90 91 09 01 	lds	r25, 0x0109	; 0x800109 <sensor_input_buffer+0x1>
+ 4b6:	20 ed       	ldi	r18, 0xD0	; 208
+ 4b8:	29 0f       	add	r18, r25
+ 4ba:	2a 30       	cpi	r18, 0x0A	; 10
+ 4bc:	18 f4       	brcc	.+6      	; 0x4c4 <__vector_30+0xa0>
+ 4be:	89 0f       	add	r24, r25
+ 4c0:	80 53       	subi	r24, 0x30	; 48
+ 4c2:	0d c0       	rjmp	.+26     	; 0x4de <__vector_30+0xba>
+ 4c4:	2f e9       	ldi	r18, 0x9F	; 159
+ 4c6:	29 0f       	add	r18, r25
+ 4c8:	26 30       	cpi	r18, 0x06	; 6
+ 4ca:	18 f4       	brcc	.+6      	; 0x4d2 <__vector_30+0xae>
+ 4cc:	89 0f       	add	r24, r25
+ 4ce:	87 55       	subi	r24, 0x57	; 87
+ 4d0:	06 c0       	rjmp	.+12     	; 0x4de <__vector_30+0xba>
+ 4d2:	2f eb       	ldi	r18, 0xBF	; 191
+ 4d4:	29 0f       	add	r18, r25
+ 4d6:	26 30       	cpi	r18, 0x06	; 6
+ 4d8:	10 f4       	brcc	.+4      	; 0x4de <__vector_30+0xba>
+ 4da:	89 0f       	add	r24, r25
+ 4dc:	87 53       	subi	r24, 0x37	; 55
+ 4de:	10 92 00 01 	sts	0x0100, r1	; 0x800100 <__DATA_REGION_ORIGIN__>
+ 4e2:	c7 de       	rcall	.-626    	; 0x272 <TREAT_SENSOR_DATA>
+ 4e4:	ff 91       	pop	r31
+ 4e6:	ef 91       	pop	r30
+ 4e8:	bf 91       	pop	r27
+ 4ea:	af 91       	pop	r26
+ 4ec:	9f 91       	pop	r25
+ 4ee:	8f 91       	pop	r24
+ 4f0:	7f 91       	pop	r23
+ 4f2:	6f 91       	pop	r22
+ 4f4:	5f 91       	pop	r21
+ 4f6:	4f 91       	pop	r20
+ 4f8:	3f 91       	pop	r19
+ 4fa:	2f 91       	pop	r18
+ 4fc:	0f 90       	pop	r0
+ 4fe:	0b be       	out	0x3b, r0	; 59
+ 500:	0f 90       	pop	r0
+ 502:	0f be       	out	0x3f, r0	; 63
+ 504:	0f 90       	pop	r0
+ 506:	1f 90       	pop	r1
+ 508:	18 95       	reti
+
+0000050a <main>:
+	}
 }
 
-#if 1 // 1 for project, 0 for bottom main function to use as test bench
+#else
 int main(void) {
 	SYS_CONFIG();
- 13e:	ce df       	rcall	.-100    	; 0xdc <SYS_CONFIG>
+ 50a:	6d de       	rcall	.-806    	; 0x1e6 <SYS_CONFIG>
 	INIT();
- 140:	f4 df       	rcall	.-24     	; 0x12a <INIT>
- 142:	85 b7       	in	r24, 0x35	; 53
-	
-	while(1){
-		sleep_enable(); // arm sleep mode
- 144:	80 62       	ori	r24, 0x20	; 32
- 146:	85 bf       	out	0x35, r24	; 53
- 148:	78 94       	sei
-		sei(); // global interrupt enable
- 14a:	88 95       	sleep
-		sleep_cpu(); // put CPU to sleep
- 14c:	fa cf       	rjmp	.-12     	; 0x142 <main+0x4>
+ 50c:	a9 de       	rcall	.-686    	; 0x260 <INIT>
+ 50e:	80 e8       	ldi	r24, 0x80	; 128
+	TOS = 0x80;
+ 510:	80 93 05 01 	sts	0x0105, r24	; 0x800105 <TOS>
+	SENSOR_TRANSMIT(CRC_CHECK11(0x80));
+ 514:	ed dd       	rcall	.-1062   	; 0xf0 <CRC_CHECK11>
+ 516:	85 de       	rcall	.-758    	; 0x222 <SENSOR_TRANSMIT>
+ 518:	80 e0       	ldi	r24, 0x00	; 0
+ 51a:	90 e0       	ldi	r25, 0x00	; 0
+}
+ 51c:	08 95       	ret
 
-0000014e <_exit>:
- 14e:	f8 94       	cli
+0000051e <_exit>:
+ 51e:	f8 94       	cli
 
-00000150 <__stop_program>:
- 150:	ff cf       	rjmp	.-2      	; 0x150 <__stop_program>
+00000520 <__stop_program>:
+ 520:	ff cf       	rjmp	.-2      	; 0x520 <__stop_program>
