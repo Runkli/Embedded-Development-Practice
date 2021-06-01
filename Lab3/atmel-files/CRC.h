@@ -29,8 +29,10 @@ unsigned char CRC_CHECK3(unsigned char command) {
 }
 
 unsigned char CRC_CHECK11(unsigned char command) {
+	unsigned char crc_bits = command&0x1F;
 	unsigned char data = TOS;
-	unsigned char temp;
+	unsigned char temp = NULL;
+	//unsigned char org_com = command, org_dat = data;
 	
 	command = command & 0xE0;// isolate first 3 bits, 11100000
 	//data ready
@@ -48,19 +50,19 @@ unsigned char CRC_CHECK11(unsigned char command) {
 	if( data >= 0x20 )
 	data ^= gen;
 	
-	data = (data<<1) | (temp>> 7); // data 0DDDDDDT (lsb of data from temp)
+	data = data<<1 | temp>> 7; // data 0DDDDDDT (lsb of data from temp)
 	temp = temp<<1; // T0000000
 	if( data >= 0x20 )
 	data ^= gen;
 	
 	
-	data = (data<<1) | (temp>>6); // data DDDDDDTT ( lsb of data from temp)
+	data = data<<1 | temp>>7; // data DDDDDDTT ( lsb of data from temp)
 	if( data >= 0x20 )
 	data ^= gen;
 	
 	// data DDDDDDDD
 	for (int i=0; i < 8; i++){
-		data = (data<<1) | (command>>7);// data DDDDDDDC
+		data = data<<1 | command>> 7;// data DDDDDDDC
 		command = command<<1;		// cmd CCCCCCC0
 		if ( data >= 0x20 )
 		data ^= gen;
@@ -69,8 +71,10 @@ unsigned char CRC_CHECK11(unsigned char command) {
 	// data variable now holds the remainder, 5 bits long
 	// we will now check if the CRC which we obtained matches [4:0] in command variable
 	unsigned char return_value = 0x00;
-	if (data == (command&0x1F))
-	return_value = 0xFF;
+	
+	if (data == crc_bits)
+		return_value = 0xFF;
+	
 	return return_value;
 	
 }
