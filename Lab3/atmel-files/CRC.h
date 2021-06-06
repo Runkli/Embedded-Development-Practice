@@ -31,7 +31,7 @@ unsigned char CRC_CHECK3(unsigned char command) {
 unsigned char CRC_CHECK11(unsigned char command) {
 	unsigned char crc_bits = command&0x1F;
 	unsigned char data = TOS;
-	unsigned char temp = NULL;
+	unsigned char temp = 0;
 	//unsigned char org_com = command, org_dat = data;
 	
 	command = command & 0xE0;// isolate first 3 bits, 11100000
@@ -73,7 +73,7 @@ unsigned char CRC_CHECK11(unsigned char command) {
 	unsigned char return_value = 0x00;
 	
 	if (data == crc_bits)
-		return_value = 0xFF;
+	return_value = 0xFF;
 	
 	return return_value;
 	
