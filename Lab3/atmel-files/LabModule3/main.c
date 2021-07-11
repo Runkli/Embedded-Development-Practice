@@ -198,7 +198,7 @@ ISR(USART0_RX_vect) {
 		// checks if timeout and wd timers are setup, if not, it expects them to be the first inputs by the user
 		if(saved){
 			// checks the validity of user input
-			if(user_input_buffer[0] < '8' && user_input_buffer[0] >= '0'){
+			if(user_input_buffer[0] < '9' && user_input_buffer[0] >= '0'){
 				// notify user, calculate the timer counter and set saved
 				USER_TRANSMIT_START("RECEIVED");
 				timeOutCount = (user_input_buffer[0] - '0') * 8 * 1000000 / 1024;
@@ -206,7 +206,7 @@ ISR(USART0_RX_vect) {
 			}
 		}
 		else if(wdSaved){ // expects wd setup second// checks the validity of user input
-			if(user_input_buffer[0] < '8' && user_input_buffer[0] >= '0'){
+			if(user_input_buffer[0] < '9' && user_input_buffer[0] >= '0'){
 				// notify user, calculate the timer counter and set saved
 				USER_TRANSMIT_START("RECEIVED");
 				watchdogSetting = user_input_buffer[0] - '0';
@@ -228,8 +228,7 @@ ISR(USART0_RX_vect) {
 				break;
 				// reset
 				case '3':
-				SYS_CONFIG();
-				INIT();
+				startI();
 				break;
 				// unknown command
 				default:
@@ -433,7 +432,7 @@ void PROMPT_USER_WD(){
 	// saves settings to eeprom
 	USER_TRANSMIT_START("Saving settings");
 	// writing saved and timer settings
-	SAVE_TO_EEPROM(0x00, 0x01);
+	SAVE_TO_EEPROM(0x00, 0x00);
 	SAVE_TO_EEPROM(0x01, (timeOutCount&0xFF00)>>8);
 	SAVE_TO_EEPROM(0x02, (timeOutCount&0x00FF));
 	SAVE_TO_EEPROM(0x03, watchdogSetting);
@@ -477,17 +476,22 @@ void enableWD(){
 	}
 }
 
-// main function
-int main(void) {
-	// reset eeprom, ONLY for demo purposes!
-	SAVE_TO_EEPROM(0xFF, 0x00);
-	SAVE_TO_EEPROM(0x01, 0x00);
-	SAVE_TO_EEPROM(0x02, 0x00);
-	
+// reset and restart procedure
+void startI(void){
 	SYS_CONFIG(); // configure the system
 	PROMPT_USER_WD(); // prompt the user for timer setup if not setup
 	INIT(); // initializes and reset the sensors
 	USER_TRANSMIT_START("\rEnter choice (and period): 1-Mem Dump 2-Last Entry 3-Restart \0"); // prints menu
+}
+
+// main function
+int main(void) {
+	// reset eeprom, ONLY for demo purposes!
+	/*SAVE_TO_EEPROM(0x00, 0xFF);
+	SAVE_TO_EEPROM(0x01, 0x00);
+	SAVE_TO_EEPROM(0x02, 0x00);*/
+	
+	startI();
 	
 	enableWD(); // enables watchdog timer if setup
 	while(1){ // waits for user or sensor interrupts

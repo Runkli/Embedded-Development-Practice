@@ -3,31 +3,31 @@ LabModule3.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .data         00000134  00800100  00000a28  00000abc  2**0
+  0 .data         00000134  00800100  00000a12  00000aa6  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  1 .text         00000a28  00000000  00000000  00000094  2**1
+  1 .text         00000a12  00000000  00000000  00000094  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .bss          00000d94  00800234  00800234  00000bf0  2**0
+  2 .bss          00000d94  00800234  00800234  00000bda  2**0
                   ALLOC
-  3 .comment      00000030  00000000  00000000  00000bf0  2**0
+  3 .comment      00000030  00000000  00000000  00000bda  2**0
                   CONTENTS, READONLY
-  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000c20  2**2
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000c0c  2**2
                   CONTENTS, READONLY
-  5 .debug_aranges 000000e8  00000000  00000000  00000c5c  2**0
+  5 .debug_aranges 000000f0  00000000  00000000  00000c48  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   00001623  00000000  00000000  00000d44  2**0
+  6 .debug_info   000015e3  00000000  00000000  00000d38  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 00000a9e  00000000  00000000  00002367  2**0
+  7 .debug_abbrev 00000a9e  00000000  00000000  0000231b  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   00000bb4  00000000  00000000  00002e05  2**0
+  8 .debug_line   00000bb1  00000000  00000000  00002db9  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  0000037c  00000000  00000000  000039bc  2**2
+  9 .debug_frame  0000038c  00000000  00000000  0000396c  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    0000071d  00000000  00000000  00003d38  2**0
+ 10 .debug_str    00000724  00000000  00000000  00003cf8  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    00000c6a  00000000  00000000  00004455  2**0
+ 11 .debug_loc    00000c6a  00000000  00000000  0000441c  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00000108  00000000  00000000  000050bf  2**0
+ 12 .debug_ranges 00000110  00000000  00000000  00005086  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -69,7 +69,7 @@ Disassembly of section .text:
   42:	00 00       	nop
   44:	49 c0       	rjmp	.+146    	; 0xd8 <__bad_interrupt>
   46:	00 00       	nop
-  48:	be c2       	rjmp	.+1404   	; 0x5c6 <__vector_18>
+  48:	0b c4       	rjmp	.+2070   	; 0x860 <__vector_18>
   4a:	00 00       	nop
   4c:	45 c0       	rjmp	.+138    	; 0xd8 <__bad_interrupt>
   4e:	00 00       	nop
@@ -93,7 +93,7 @@ Disassembly of section .text:
   72:	00 00       	nop
   74:	2d c1       	rjmp	.+602    	; 0x2d0 <__vector_29>
   76:	00 00       	nop
-  78:	92 c3       	rjmp	.+1828   	; 0x79e <__vector_30>
+  78:	f0 c2       	rjmp	.+1504   	; 0x65a <__vector_30>
   7a:	00 00       	nop
   7c:	2d c0       	rjmp	.+90     	; 0xd8 <__bad_interrupt>
   7e:	00 00       	nop
@@ -103,15 +103,15 @@ Disassembly of section .text:
   86:	00 00       	nop
   88:	27 c0       	rjmp	.+78     	; 0xd8 <__bad_interrupt>
   8a:	00 00       	nop
-  8c:	ca 04       	cpc	r12, r10
-  8e:	ca 04       	cpc	r12, r10
-  90:	c6 04       	cpc	r12, r6
-  92:	b3 04       	cpc	r11, r3
-  94:	c8 04       	cpc	r12, r8
-  96:	b5 04       	cpc	r11, r5
-  98:	b7 04       	cpc	r11, r7
-  9a:	b9 04       	cpc	r11, r9
-  9c:	bb 04       	cpc	r11, r11
+  8c:	28 04       	cpc	r2, r8
+  8e:	28 04       	cpc	r2, r8
+  90:	24 04       	cpc	r2, r4
+  92:	11 04       	cpc	r1, r1
+  94:	26 04       	cpc	r2, r6
+  96:	13 04       	cpc	r1, r3
+  98:	15 04       	cpc	r1, r5
+  9a:	17 04       	cpc	r1, r7
+  9c:	19 04       	cpc	r1, r9
 
 0000009e <__ctors_end>:
   9e:	11 24       	eor	r1, r1
@@ -125,7 +125,7 @@ Disassembly of section .text:
   aa:	12 e0       	ldi	r17, 0x02	; 2
   ac:	a0 e0       	ldi	r26, 0x00	; 0
   ae:	b1 e0       	ldi	r27, 0x01	; 1
-  b0:	e8 e2       	ldi	r30, 0x28	; 40
+  b0:	e2 e1       	ldi	r30, 0x12	; 18
   b2:	fa e0       	ldi	r31, 0x0A	; 10
   b4:	00 e0       	ldi	r16, 0x00	; 0
   b6:	0b bf       	out	0x3b, r16	; 59
@@ -149,8 +149,8 @@ Disassembly of section .text:
   ce:	a8 3c       	cpi	r26, 0xC8	; 200
   d0:	b2 07       	cpc	r27, r18
   d2:	e1 f7       	brne	.-8      	; 0xcc <.do_clear_bss_loop>
-  d4:	60 d4       	rcall	.+2240   	; 0x996 <main>
-  d6:	a6 c4       	rjmp	.+2380   	; 0xa24 <_exit>
+  d4:	66 d4       	rcall	.+2252   	; 0x9a2 <main>
+  d6:	9b c4       	rjmp	.+2358   	; 0xa0e <_exit>
 
 000000d8 <__bad_interrupt>:
   d8:	93 cf       	rjmp	.-218    	; 0x0 <__vectors>
@@ -916,7 +916,7 @@ void USER_TRANSMIT_START(char string[]){
  46a:	be 01       	movw	r22, r28
  46c:	86 e4       	ldi	r24, 0x46	; 70
  46e:	92 e0       	ldi	r25, 0x02	; 2
- 470:	d2 d2       	rcall	.+1444   	; 0xa16 <strcpy>
+ 470:	c7 d2       	rcall	.+1422   	; 0xa00 <strcpy>
 	user_output_buffer_size = strlen(string)+1; // set the length of the buffer
  472:	fe 01       	movw	r30, r28
  474:	01 90       	ld	r0, Z+
@@ -1139,857 +1139,849 @@ ISR (TIMER1_OVF_vect){
  5c2:	1f 90       	pop	r1
  5c4:	18 95       	reti
 
-000005c6 <__vector_18>:
-char user_input_buffer [5];
-char user_input_buffer_ptr = 0;
-
-// bluetooth rx
-// data register empty
-ISR(USART0_RX_vect) {
- 5c6:	1f 92       	push	r1
- 5c8:	0f 92       	push	r0
- 5ca:	0f b6       	in	r0, 0x3f	; 63
- 5cc:	0f 92       	push	r0
- 5ce:	11 24       	eor	r1, r1
- 5d0:	0b b6       	in	r0, 0x3b	; 59
- 5d2:	0f 92       	push	r0
- 5d4:	0f 93       	push	r16
- 5d6:	1f 93       	push	r17
- 5d8:	2f 93       	push	r18
- 5da:	3f 93       	push	r19
- 5dc:	4f 93       	push	r20
- 5de:	5f 93       	push	r21
- 5e0:	6f 93       	push	r22
- 5e2:	7f 93       	push	r23
- 5e4:	8f 93       	push	r24
- 5e6:	9f 93       	push	r25
- 5e8:	af 93       	push	r26
- 5ea:	bf 93       	push	r27
- 5ec:	ef 93       	push	r30
- 5ee:	ff 93       	push	r31
-	sleep_disable(); // disable sleep once an interrupt wakes CPU up
- 5f0:	85 b7       	in	r24, 0x35	; 53
- 5f2:	8f 7d       	andi	r24, 0xDF	; 223
- 5f4:	85 bf       	out	0x35, r24	; 53
-	
-	// reset wd timer
-	wdt_reset();
- 5f6:	a8 95       	wdr
-	
-	// read one byte from the usart register and roll the buffer pointer
-	user_input_buffer[user_input_buffer_ptr++] = UDR0;
- 5f8:	a0 91 38 02 	lds	r26, 0x0238	; 0x800238 <user_input_buffer_ptr>
- 5fc:	e1 e0       	ldi	r30, 0x01	; 1
- 5fe:	ea 0f       	add	r30, r26
- 600:	e0 93 38 02 	sts	0x0238, r30	; 0x800238 <user_input_buffer_ptr>
- 604:	8c b1       	in	r24, 0x0c	; 12
- 606:	b0 e0       	ldi	r27, 0x00	; 0
- 608:	af 5b       	subi	r26, 0xBF	; 191
- 60a:	bd 4f       	sbci	r27, 0xFD	; 253
- 60c:	8c 93       	st	X, r24
-	// if the read byte is a '.' command is issued
-	if (user_input_buffer[user_input_buffer_ptr - 1] == '.') {
- 60e:	f0 e0       	ldi	r31, 0x00	; 0
- 610:	e0 5c       	subi	r30, 0xC0	; 192
- 612:	fd 4f       	sbci	r31, 0xFD	; 253
- 614:	80 81       	ld	r24, Z
- 616:	8e 32       	cpi	r24, 0x2E	; 46
- 618:	09 f0       	breq	.+2      	; 0x61c <__vector_18+0x56>
- 61a:	62 c0       	rjmp	.+196    	; 0x6e0 <__vector_18+0x11a>
-		// checks if timeout and wd timers are setup, if not, it expects them to be the first inputs by the user
-		if(saved){
- 61c:	80 91 c7 0f 	lds	r24, 0x0FC7	; 0x800fc7 <saved>
- 620:	88 23       	and	r24, r24
- 622:	91 f1       	breq	.+100    	; 0x688 <__vector_18+0xc2>
-			// checks the validity of user input
-			if(user_input_buffer[0] < '9' && user_input_buffer[0] >= '0'){
- 624:	80 91 41 02 	lds	r24, 0x0241	; 0x800241 <user_input_buffer>
- 628:	80 53       	subi	r24, 0x30	; 48
- 62a:	89 30       	cpi	r24, 0x09	; 9
- 62c:	08 f0       	brcs	.+2      	; 0x630 <__vector_18+0x6a>
- 62e:	56 c0       	rjmp	.+172    	; 0x6dc <__vector_18+0x116>
-				// notify user, calculate the timer counter and set saved
-				USER_TRANSMIT_START("RECEIVED");
- 630:	8b e7       	ldi	r24, 0x7B	; 123
- 632:	91 e0       	ldi	r25, 0x01	; 1
- 634:	08 df       	rcall	.-496    	; 0x446 <USER_TRANSMIT_START>
-				timeOutCount = (user_input_buffer[0] - '0') * 8 * 1000000 / 1024;
- 636:	a0 91 41 02 	lds	r26, 0x0241	; 0x800241 <user_input_buffer>
- 63a:	b0 e0       	ldi	r27, 0x00	; 0
- 63c:	d0 97       	sbiw	r26, 0x30	; 48
- 63e:	aa 0f       	add	r26, r26
- 640:	bb 1f       	adc	r27, r27
- 642:	aa 0f       	add	r26, r26
- 644:	bb 1f       	adc	r27, r27
- 646:	aa 0f       	add	r26, r26
- 648:	bb 1f       	adc	r27, r27
- 64a:	20 e4       	ldi	r18, 0x40	; 64
- 64c:	32 e4       	ldi	r19, 0x42	; 66
- 64e:	4f e0       	ldi	r20, 0x0F	; 15
- 650:	50 e0       	ldi	r21, 0x00	; 0
- 652:	c2 d1       	rcall	.+900    	; 0x9d8 <__mulshisi3>
- 654:	8b 01       	movw	r16, r22
- 656:	9c 01       	movw	r18, r24
- 658:	99 23       	and	r25, r25
- 65a:	24 f4       	brge	.+8      	; 0x664 <__vector_18+0x9e>
- 65c:	01 50       	subi	r16, 0x01	; 1
- 65e:	1c 4f       	sbci	r17, 0xFC	; 252
- 660:	2f 4f       	sbci	r18, 0xFF	; 255
- 662:	3f 4f       	sbci	r19, 0xFF	; 255
- 664:	d9 01       	movw	r26, r18
- 666:	c8 01       	movw	r24, r16
- 668:	07 2e       	mov	r0, r23
- 66a:	7a e0       	ldi	r23, 0x0A	; 10
- 66c:	b5 95       	asr	r27
- 66e:	a7 95       	ror	r26
- 670:	97 95       	ror	r25
- 672:	87 95       	ror	r24
- 674:	7a 95       	dec	r23
- 676:	d1 f7       	brne	.-12     	; 0x66c <__vector_18+0xa6>
- 678:	70 2d       	mov	r23, r0
- 67a:	90 93 3a 02 	sts	0x023A, r25	; 0x80023a <timeOutCount+0x1>
- 67e:	80 93 39 02 	sts	0x0239, r24	; 0x800239 <timeOutCount>
-				saved = 0;
- 682:	10 92 c7 0f 	sts	0x0FC7, r1	; 0x800fc7 <saved>
- 686:	2a c0       	rjmp	.+84     	; 0x6dc <__vector_18+0x116>
-			}
-		}
-		else if(wdSaved){ // expects wd setup second// checks the validity of user input
- 688:	80 91 c5 0f 	lds	r24, 0x0FC5	; 0x800fc5 <wdSaved>
- 68c:	88 23       	and	r24, r24
- 68e:	81 f0       	breq	.+32     	; 0x6b0 <__vector_18+0xea>
-			if(user_input_buffer[0] < '9' && user_input_buffer[0] >= '0'){
- 690:	80 91 41 02 	lds	r24, 0x0241	; 0x800241 <user_input_buffer>
- 694:	80 53       	subi	r24, 0x30	; 48
- 696:	89 30       	cpi	r24, 0x09	; 9
- 698:	08 f5       	brcc	.+66     	; 0x6dc <__vector_18+0x116>
-				// notify user, calculate the timer counter and set saved
-				USER_TRANSMIT_START("RECEIVED");
- 69a:	8b e7       	ldi	r24, 0x7B	; 123
- 69c:	91 e0       	ldi	r25, 0x01	; 1
- 69e:	d3 de       	rcall	.-602    	; 0x446 <USER_TRANSMIT_START>
-				watchdogSetting = user_input_buffer[0] - '0';
- 6a0:	80 91 41 02 	lds	r24, 0x0241	; 0x800241 <user_input_buffer>
- 6a4:	80 53       	subi	r24, 0x30	; 48
- 6a6:	80 93 c6 0f 	sts	0x0FC6, r24	; 0x800fc6 <watchdogSetting>
-				wdSaved = 0;
- 6aa:	10 92 c5 0f 	sts	0x0FC5, r1	; 0x800fc5 <wdSaved>
- 6ae:	16 c0       	rjmp	.+44     	; 0x6dc <__vector_18+0x116>
-			}
-		}
-		else{ // normal operation command
-			char number = user_input_buffer[0];
-			switch (number){
- 6b0:	80 91 41 02 	lds	r24, 0x0241	; 0x800241 <user_input_buffer>
- 6b4:	82 33       	cpi	r24, 0x32	; 50
- 6b6:	41 f0       	breq	.+16     	; 0x6c8 <__vector_18+0x102>
- 6b8:	83 33       	cpi	r24, 0x33	; 51
- 6ba:	51 f0       	breq	.+20     	; 0x6d0 <__vector_18+0x10a>
- 6bc:	81 33       	cpi	r24, 0x31	; 49
-				// mem dump
-				case '1':
-				sei(); // interrupts are reenabled since service readout relies on them
- 6be:	59 f4       	brne	.+22     	; 0x6d6 <__vector_18+0x110>
-				SERVICE_READOUT(0);
- 6c0:	78 94       	sei
- 6c2:	80 e0       	ldi	r24, 0x00	; 0
-				break;
- 6c4:	e8 de       	rcall	.-560    	; 0x496 <SERVICE_READOUT>
-				// last entry
-				case '2':
-				sei(); // interrupts are reenabled since service readout relies on them
-				SERVICE_READOUT(1);
- 6c6:	0a c0       	rjmp	.+20     	; 0x6dc <__vector_18+0x116>
- 6c8:	78 94       	sei
-				break;
- 6ca:	81 e0       	ldi	r24, 0x01	; 1
-				// reset
-				case '3':
-				SYS_CONFIG();
- 6cc:	e4 de       	rcall	.-568    	; 0x496 <SERVICE_READOUT>
-				INIT();
- 6ce:	06 c0       	rjmp	.+12     	; 0x6dc <__vector_18+0x116>
- 6d0:	cd dd       	rcall	.-1126   	; 0x26c <SYS_CONFIG>
-				break;
- 6d2:	41 df       	rcall	.-382    	; 0x556 <INIT>
-				// unknown command
-				default:
-				USER_TRANSMIT_START("Invalid command");
- 6d4:	03 c0       	rjmp	.+6      	; 0x6dc <__vector_18+0x116>
- 6d6:	84 e8       	ldi	r24, 0x84	; 132
- 6d8:	91 e0       	ldi	r25, 0x01	; 1
- 6da:	b5 de       	rcall	.-662    	; 0x446 <USER_TRANSMIT_START>
-				break;
-			}
-		}
-		// reset pointer to 0
-		user_input_buffer_ptr = 0;
- 6dc:	10 92 38 02 	sts	0x0238, r1	; 0x800238 <user_input_buffer_ptr>
-	}
-}
- 6e0:	ff 91       	pop	r31
- 6e2:	ef 91       	pop	r30
- 6e4:	bf 91       	pop	r27
- 6e6:	af 91       	pop	r26
- 6e8:	9f 91       	pop	r25
- 6ea:	8f 91       	pop	r24
- 6ec:	7f 91       	pop	r23
- 6ee:	6f 91       	pop	r22
- 6f0:	5f 91       	pop	r21
- 6f2:	4f 91       	pop	r20
- 6f4:	3f 91       	pop	r19
- 6f6:	2f 91       	pop	r18
- 6f8:	1f 91       	pop	r17
- 6fa:	0f 91       	pop	r16
- 6fc:	0f 90       	pop	r0
- 6fe:	0b be       	out	0x3b, r0	; 59
- 700:	0f 90       	pop	r0
- 702:	0f be       	out	0x3f, r0	; 63
- 704:	0f 90       	pop	r0
- 706:	1f 90       	pop	r1
- 708:	18 95       	reti
-
-0000070a <TREAT_SENSOR_DATA>:
+000005c6 <TREAT_SENSOR_DATA>:
 	START_TIMER(0); // start timeout timer 1
 	USER_TRANSMIT_START("RESETTING SENSOR");
 }
 
 // main function that deals with the sensor input protocol
 void TREAT_SENSOR_DATA(unsigned char packet_in){
- 70a:	cf 93       	push	r28
- 70c:	df 93       	push	r29
- 70e:	c8 2f       	mov	r28, r24
+ 5c6:	cf 93       	push	r28
+ 5c8:	df 93       	push	r29
+ 5ca:	c8 2f       	mov	r28, r24
 	SENSOR_TRANSMIT(packet_in);
- 710:	cd dd       	rcall	.-1126   	; 0x2ac <SENSOR_TRANSMIT>
+ 5cc:	6f de       	rcall	.-802    	; 0x2ac <SENSOR_TRANSMIT>
 	
 	if (((1<<7)&packet_in) == 0x80) {// if not command type, eg packet_in[7] == 1
- 712:	cc 23       	and	r28, r28
- 714:	3c f4       	brge	.+14     	; 0x724 <TREAT_SENSOR_DATA+0x1a>
+ 5ce:	cc 23       	and	r28, r28
+ 5d0:	3c f4       	brge	.+14     	; 0x5e0 <TREAT_SENSOR_DATA+0x1a>
 		TOS = packet_in;
- 716:	c0 93 3c 02 	sts	0x023C, r28	; 0x80023c <TOS>
+ 5d2:	c0 93 3c 02 	sts	0x023C, r28	; 0x80023c <TOS>
 		TOS_STATE = FULL;
- 71a:	81 e0       	ldi	r24, 0x01	; 1
- 71c:	80 93 3b 02 	sts	0x023B, r24	; 0x80023b <TOS_STATE>
+ 5d6:	81 e0       	ldi	r24, 0x01	; 1
+ 5d8:	80 93 3b 02 	sts	0x023B, r24	; 0x80023b <TOS_STATE>
 		START_TIMER(1);
- 720:	4a dd       	rcall	.-1388   	; 0x1b6 <START_TIMER>
+ 5dc:	ec dd       	rcall	.-1064   	; 0x1b6 <START_TIMER>
 	} else { // it is a command
 		STOP_TIMER(1);
- 722:	3a c0       	rjmp	.+116    	; 0x798 <TREAT_SENSOR_DATA+0x8e>
- 724:	81 e0       	ldi	r24, 0x01	; 1
- 726:	6e dd       	rcall	.-1316   	; 0x204 <STOP_TIMER>
+ 5de:	3a c0       	rjmp	.+116    	; 0x654 <TREAT_SENSOR_DATA+0x8e>
+ 5e0:	81 e0       	ldi	r24, 0x01	; 1
+ 5e2:	10 de       	rcall	.-992    	; 0x204 <STOP_TIMER>
 		if( ((1<<7)&TOS) == 0x80) { // if TOS has data packet
- 728:	d0 91 3c 02 	lds	r29, 0x023C	; 0x80023c <TOS>
- 72c:	dd 23       	and	r29, r29
+ 5e4:	d0 91 3c 02 	lds	r29, 0x023C	; 0x80023c <TOS>
+ 5e8:	dd 23       	and	r29, r29
 			unsigned char result = CRC_CHECK11(packet_in);
- 72e:	d4 f4       	brge	.+52     	; 0x764 <TREAT_SENSOR_DATA+0x5a>
- 730:	8c 2f       	mov	r24, r28
- 732:	f3 dc       	rcall	.-1562   	; 0x11a <CRC_CHECK11>
+ 5ea:	d4 f4       	brge	.+52     	; 0x620 <TREAT_SENSOR_DATA+0x5a>
+ 5ec:	8c 2f       	mov	r24, r28
+ 5ee:	95 dd       	rcall	.-1238   	; 0x11a <CRC_CHECK11>
 			if (result==0xFF) { // If CRC_CHECK11 PASS
- 734:	8f 3f       	cpi	r24, 0xFF	; 255
- 736:	71 f4       	brne	.+28     	; 0x754 <TREAT_SENSOR_DATA+0x4a>
+ 5f0:	8f 3f       	cpi	r24, 0xFF	; 255
+ 5f2:	71 f4       	brne	.+28     	; 0x610 <TREAT_SENSOR_DATA+0x4a>
 				if ( (packet_in&0xE0) == LOG_REQUEST ) { // if packet in is log request
- 738:	c0 7e       	andi	r28, 0xE0	; 224
- 73a:	c0 32       	cpi	r28, 0x20	; 32
+ 5f4:	c0 7e       	andi	r28, 0xE0	; 224
+ 5f6:	c0 32       	cpi	r28, 0x20	; 32
 					LOG_REQUEST_FUNCTION(TOS & 0x1F);
- 73c:	49 f4       	brne	.+18     	; 0x750 <TREAT_SENSOR_DATA+0x46>
- 73e:	8d 2f       	mov	r24, r29
- 740:	8f 71       	andi	r24, 0x1F	; 31
+ 5f8:	49 f4       	brne	.+18     	; 0x60c <TREAT_SENSOR_DATA+0x46>
+ 5fa:	8d 2f       	mov	r24, r29
+ 5fc:	8f 71       	andi	r24, 0x1F	; 31
 					TOS_STATE = EMPTY;
- 742:	ab dd       	rcall	.-1194   	; 0x29a <LOG_REQUEST_FUNCTION>
+ 5fe:	4d de       	rcall	.-870    	; 0x29a <LOG_REQUEST_FUNCTION>
 					SENSOR_TRANSMIT(CRC3(ACNKOWLEDGE));
- 744:	10 92 3b 02 	sts	0x023B, r1	; 0x80023b <TOS_STATE>
- 748:	80 e4       	ldi	r24, 0x40	; 64
- 74a:	c7 dc       	rcall	.-1650   	; 0xda <CRC3>
- 74c:	af dd       	rcall	.-1186   	; 0x2ac <SENSOR_TRANSMIT>
+ 600:	10 92 3b 02 	sts	0x023B, r1	; 0x80023b <TOS_STATE>
+ 604:	80 e4       	ldi	r24, 0x40	; 64
+ 606:	69 dd       	rcall	.-1326   	; 0xda <CRC3>
+ 608:	51 de       	rcall	.-862    	; 0x2ac <SENSOR_TRANSMIT>
 				}
 				else{
 					INIT();
- 74e:	24 c0       	rjmp	.+72     	; 0x798 <TREAT_SENSOR_DATA+0x8e>
+ 60a:	24 c0       	rjmp	.+72     	; 0x654 <TREAT_SENSOR_DATA+0x8e>
 				}
 			} else { // CRC_CHECK11 FAIL
 				TOS_STATE = EMPTY;
- 750:	02 df       	rcall	.-508    	; 0x556 <INIT>
+ 60c:	a4 df       	rcall	.-184    	; 0x556 <INIT>
 				SENSOR_TRANSMIT(0xAA);
- 752:	22 c0       	rjmp	.+68     	; 0x798 <TREAT_SENSOR_DATA+0x8e>
- 754:	10 92 3b 02 	sts	0x023B, r1	; 0x80023b <TOS_STATE>
+ 60e:	22 c0       	rjmp	.+68     	; 0x654 <TREAT_SENSOR_DATA+0x8e>
+ 610:	10 92 3b 02 	sts	0x023B, r1	; 0x80023b <TOS_STATE>
 				SENSOR_TRANSMIT(CRC3(REPEAT_REQUEST));
- 758:	8a ea       	ldi	r24, 0xAA	; 170
- 75a:	a8 dd       	rcall	.-1200   	; 0x2ac <SENSOR_TRANSMIT>
- 75c:	80 ee       	ldi	r24, 0xE0	; 224
- 75e:	bd dc       	rcall	.-1670   	; 0xda <CRC3>
- 760:	a5 dd       	rcall	.-1206   	; 0x2ac <SENSOR_TRANSMIT>
+ 614:	8a ea       	ldi	r24, 0xAA	; 170
+ 616:	4a de       	rcall	.-876    	; 0x2ac <SENSOR_TRANSMIT>
+ 618:	80 ee       	ldi	r24, 0xE0	; 224
+ 61a:	5f dd       	rcall	.-1346   	; 0xda <CRC3>
+ 61c:	47 de       	rcall	.-882    	; 0x2ac <SENSOR_TRANSMIT>
 			}
 		} else { // If TOS does not have Data packet
 			unsigned char result = CRC_CHECK3(packet_in);
- 762:	1a c0       	rjmp	.+52     	; 0x798 <TREAT_SENSOR_DATA+0x8e>
- 764:	8c 2f       	mov	r24, r28
- 766:	cf dc       	rcall	.-1634   	; 0x106 <CRC_CHECK3>
+ 61e:	1a c0       	rjmp	.+52     	; 0x654 <TREAT_SENSOR_DATA+0x8e>
+ 620:	8c 2f       	mov	r24, r28
+ 622:	71 dd       	rcall	.-1310   	; 0x106 <CRC_CHECK3>
 			if( result == 0xFF) { // if CRC_CHECK3 passes
- 768:	8f 3f       	cpi	r24, 0xFF	; 255
- 76a:	89 f4       	brne	.+34     	; 0x78e <TREAT_SENSOR_DATA+0x84>
- 76c:	c0 7e       	andi	r28, 0xE0	; 224
+ 624:	8f 3f       	cpi	r24, 0xFF	; 255
+ 626:	89 f4       	brne	.+34     	; 0x64a <TREAT_SENSOR_DATA+0x84>
+ 628:	c0 7e       	andi	r28, 0xE0	; 224
 				if ( (packet_in&0xE0) == ACNKOWLEDGE ) {
- 76e:	c0 34       	cpi	r28, 0x40	; 64
- 770:	29 f4       	brne	.+10     	; 0x77c <TREAT_SENSOR_DATA+0x72>
+ 62a:	c0 34       	cpi	r28, 0x40	; 64
+ 62c:	29 f4       	brne	.+10     	; 0x638 <TREAT_SENSOR_DATA+0x72>
 					TOS_STATE = EMPTY;
- 772:	10 92 3b 02 	sts	0x023B, r1	; 0x80023b <TOS_STATE>
+ 62e:	10 92 3b 02 	sts	0x023B, r1	; 0x80023b <TOS_STATE>
 					STOP_TIMER(0);
- 776:	80 e0       	ldi	r24, 0x00	; 0
- 778:	45 dd       	rcall	.-1398   	; 0x204 <STOP_TIMER>
+ 632:	80 e0       	ldi	r24, 0x00	; 0
+ 634:	e7 dd       	rcall	.-1074   	; 0x204 <STOP_TIMER>
 				}
 				else{ // not acknowledge
 					if ( (packet_in&0xE0) == REPEAT_REQUEST ){
- 77a:	0e c0       	rjmp	.+28     	; 0x798 <TREAT_SENSOR_DATA+0x8e>
+ 636:	0e c0       	rjmp	.+28     	; 0x654 <TREAT_SENSOR_DATA+0x8e>
 						if (TOS_STATE == FULL)
- 77c:	c0 3e       	cpi	r28, 0xE0	; 224
- 77e:	61 f4       	brne	.+24     	; 0x798 <TREAT_SENSOR_DATA+0x8e>
- 780:	80 91 3b 02 	lds	r24, 0x023B	; 0x80023b <TOS_STATE>
+ 638:	c0 3e       	cpi	r28, 0xE0	; 224
+ 63a:	61 f4       	brne	.+24     	; 0x654 <TREAT_SENSOR_DATA+0x8e>
+ 63c:	80 91 3b 02 	lds	r24, 0x023B	; 0x80023b <TOS_STATE>
 						SENSOR_TRANSMIT(TOS);
- 784:	81 30       	cpi	r24, 0x01	; 1
- 786:	41 f4       	brne	.+16     	; 0x798 <TREAT_SENSOR_DATA+0x8e>
- 788:	8d 2f       	mov	r24, r29
- 78a:	90 dd       	rcall	.-1248   	; 0x2ac <SENSOR_TRANSMIT>
+ 640:	81 30       	cpi	r24, 0x01	; 1
+ 642:	41 f4       	brne	.+16     	; 0x654 <TREAT_SENSOR_DATA+0x8e>
+ 644:	8d 2f       	mov	r24, r29
+ 646:	32 de       	rcall	.-924    	; 0x2ac <SENSOR_TRANSMIT>
 					}
 				}
 
 			} else { // if CRC_CHECK3 fails
 				SENSOR_TRANSMIT(0xBB);
- 78c:	05 c0       	rjmp	.+10     	; 0x798 <TREAT_SENSOR_DATA+0x8e>
- 78e:	8b eb       	ldi	r24, 0xBB	; 187
- 790:	8d dd       	rcall	.-1254   	; 0x2ac <SENSOR_TRANSMIT>
+ 648:	05 c0       	rjmp	.+10     	; 0x654 <TREAT_SENSOR_DATA+0x8e>
+ 64a:	8b eb       	ldi	r24, 0xBB	; 187
+ 64c:	2f de       	rcall	.-930    	; 0x2ac <SENSOR_TRANSMIT>
 				SENSOR_TRANSMIT(CRC3(REPEAT_REQUEST));
- 792:	80 ee       	ldi	r24, 0xE0	; 224
- 794:	a2 dc       	rcall	.-1724   	; 0xda <CRC3>
- 796:	8a dd       	rcall	.-1260   	; 0x2ac <SENSOR_TRANSMIT>
- 798:	df 91       	pop	r29
- 79a:	cf 91       	pop	r28
+ 64e:	80 ee       	ldi	r24, 0xE0	; 224
+ 650:	44 dd       	rcall	.-1400   	; 0xda <CRC3>
+ 652:	2c de       	rcall	.-936    	; 0x2ac <SENSOR_TRANSMIT>
+ 654:	df 91       	pop	r29
+ 656:	cf 91       	pop	r28
 			}
 		}
 	}
 }
- 79c:	08 95       	ret
+ 658:	08 95       	ret
 
-0000079e <__vector_30>:
- 79e:	1f 92       	push	r1
- 7a0:	0f 92       	push	r0
+0000065a <__vector_30>:
+ 65a:	1f 92       	push	r1
+ 65c:	0f 92       	push	r0
 	
 	return number;
 }
 
 // xbee rx, sensor receive
 ISR(USART1_RX_vect) {
- 7a2:	0f b6       	in	r0, 0x3f	; 63
- 7a4:	0f 92       	push	r0
- 7a6:	11 24       	eor	r1, r1
- 7a8:	0b b6       	in	r0, 0x3b	; 59
- 7aa:	0f 92       	push	r0
- 7ac:	2f 93       	push	r18
- 7ae:	3f 93       	push	r19
- 7b0:	4f 93       	push	r20
- 7b2:	5f 93       	push	r21
- 7b4:	6f 93       	push	r22
- 7b6:	7f 93       	push	r23
- 7b8:	8f 93       	push	r24
- 7ba:	9f 93       	push	r25
- 7bc:	af 93       	push	r26
- 7be:	bf 93       	push	r27
- 7c0:	ef 93       	push	r30
- 7c2:	ff 93       	push	r31
+ 65e:	0f b6       	in	r0, 0x3f	; 63
+ 660:	0f 92       	push	r0
+ 662:	11 24       	eor	r1, r1
+ 664:	0b b6       	in	r0, 0x3b	; 59
+ 666:	0f 92       	push	r0
+ 668:	2f 93       	push	r18
+ 66a:	3f 93       	push	r19
+ 66c:	4f 93       	push	r20
+ 66e:	5f 93       	push	r21
+ 670:	6f 93       	push	r22
+ 672:	7f 93       	push	r23
+ 674:	8f 93       	push	r24
+ 676:	9f 93       	push	r25
+ 678:	af 93       	push	r26
+ 67a:	bf 93       	push	r27
+ 67c:	ef 93       	push	r30
+ 67e:	ff 93       	push	r31
 	sleep_disable(); // disable sleep once an interrupt wakes CPU up
- 7c4:	85 b7       	in	r24, 0x35	; 53
- 7c6:	8f 7d       	andi	r24, 0xDF	; 223
- 7c8:	85 bf       	out	0x35, r24	; 53
+ 680:	85 b7       	in	r24, 0x35	; 53
+ 682:	8f 7d       	andi	r24, 0xDF	; 223
+ 684:	85 bf       	out	0x35, r24	; 53
 	
 	sensor_input_buffer[sensor_input_buffer_ptr++] = UDR1; // read data into buffer
- 7ca:	e0 91 34 02 	lds	r30, 0x0234	; 0x800234 <__data_end>
- 7ce:	81 e0       	ldi	r24, 0x01	; 1
- 7d0:	8e 0f       	add	r24, r30
- 7d2:	80 93 34 02 	sts	0x0234, r24	; 0x800234 <__data_end>
- 7d6:	90 91 9c 00 	lds	r25, 0x009C	; 0x80009c <__TEXT_REGION_LENGTH__+0x7e009c>
- 7da:	f0 e0       	ldi	r31, 0x00	; 0
- 7dc:	e1 5c       	subi	r30, 0xC1	; 193
- 7de:	fd 4f       	sbci	r31, 0xFD	; 253
- 7e0:	90 83       	st	Z, r25
+ 686:	e0 91 34 02 	lds	r30, 0x0234	; 0x800234 <__data_end>
+ 68a:	81 e0       	ldi	r24, 0x01	; 1
+ 68c:	8e 0f       	add	r24, r30
+ 68e:	80 93 34 02 	sts	0x0234, r24	; 0x800234 <__data_end>
+ 692:	90 91 9c 00 	lds	r25, 0x009C	; 0x80009c <__TEXT_REGION_LENGTH__+0x7e009c>
+ 696:	f0 e0       	ldi	r31, 0x00	; 0
+ 698:	e1 5c       	subi	r30, 0xC1	; 193
+ 69a:	fd 4f       	sbci	r31, 0xFD	; 253
+ 69c:	90 83       	st	Z, r25
 	if (sensor_input_buffer_ptr == 2) { // once read both nibbles (full byte)
- 7e2:	82 30       	cpi	r24, 0x02	; 2
- 7e4:	39 f4       	brne	.+14     	; 0x7f4 <__vector_30+0x56>
+ 69e:	82 30       	cpi	r24, 0x02	; 2
+ 6a0:	39 f4       	brne	.+14     	; 0x6b0 <__vector_30+0x56>
 		sensor_input_buffer_ptr = 0; // reset pointer
- 7e6:	10 92 34 02 	sts	0x0234, r1	; 0x800234 <__data_end>
+ 6a2:	10 92 34 02 	sts	0x0234, r1	; 0x800234 <__data_end>
 		TREAT_SENSOR_DATA(chars_to_hex(sensor_input_buffer)); // send to treat data function
- 7ea:	8f e3       	ldi	r24, 0x3F	; 63
- 7ec:	92 e0       	ldi	r25, 0x02	; 2
- 7ee:	f9 dd       	rcall	.-1038   	; 0x3e2 <chars_to_hex>
- 7f0:	90 e0       	ldi	r25, 0x00	; 0
- 7f2:	8b df       	rcall	.-234    	; 0x70a <TREAT_SENSOR_DATA>
+ 6a6:	8f e3       	ldi	r24, 0x3F	; 63
+ 6a8:	92 e0       	ldi	r25, 0x02	; 2
+ 6aa:	9b de       	rcall	.-714    	; 0x3e2 <chars_to_hex>
+ 6ac:	90 e0       	ldi	r25, 0x00	; 0
+ 6ae:	8b df       	rcall	.-234    	; 0x5c6 <TREAT_SENSOR_DATA>
 	}
 }
- 7f4:	ff 91       	pop	r31
- 7f6:	ef 91       	pop	r30
- 7f8:	bf 91       	pop	r27
- 7fa:	af 91       	pop	r26
- 7fc:	9f 91       	pop	r25
- 7fe:	8f 91       	pop	r24
- 800:	7f 91       	pop	r23
- 802:	6f 91       	pop	r22
- 804:	5f 91       	pop	r21
- 806:	4f 91       	pop	r20
- 808:	3f 91       	pop	r19
- 80a:	2f 91       	pop	r18
- 80c:	0f 90       	pop	r0
- 80e:	0b be       	out	0x3b, r0	; 59
- 810:	0f 90       	pop	r0
- 812:	0f be       	out	0x3f, r0	; 63
- 814:	0f 90       	pop	r0
- 816:	1f 90       	pop	r1
- 818:	18 95       	reti
+ 6b0:	ff 91       	pop	r31
+ 6b2:	ef 91       	pop	r30
+ 6b4:	bf 91       	pop	r27
+ 6b6:	af 91       	pop	r26
+ 6b8:	9f 91       	pop	r25
+ 6ba:	8f 91       	pop	r24
+ 6bc:	7f 91       	pop	r23
+ 6be:	6f 91       	pop	r22
+ 6c0:	5f 91       	pop	r21
+ 6c2:	4f 91       	pop	r20
+ 6c4:	3f 91       	pop	r19
+ 6c6:	2f 91       	pop	r18
+ 6c8:	0f 90       	pop	r0
+ 6ca:	0b be       	out	0x3b, r0	; 59
+ 6cc:	0f 90       	pop	r0
+ 6ce:	0f be       	out	0x3f, r0	; 63
+ 6d0:	0f 90       	pop	r0
+ 6d2:	1f 90       	pop	r1
+ 6d4:	18 95       	reti
 
-0000081a <READ_FROM_EEPROM>:
+000006d6 <READ_FROM_EEPROM>:
 	}
 }
 
 // reads and returns a byte from eeprom at address
 char READ_FROM_EEPROM(short address){
 	while((EECR & (1<<EEWE)) == 2)
- 81a:	e1 9b       	sbis	0x1c, 1	; 28
- 81c:	08 c0       	rjmp	.+16     	; 0x82e <READ_FROM_EEPROM+0x14>
- 81e:	ef ec       	ldi	r30, 0xCF	; 207
- 820:	f7 e0       	ldi	r31, 0x07	; 7
- 822:	31 97       	sbiw	r30, 0x01	; 1
- 824:	f1 f7       	brne	.-4      	; 0x822 <READ_FROM_EEPROM+0x8>
- 826:	00 c0       	rjmp	.+0      	; 0x828 <READ_FROM_EEPROM+0xe>
- 828:	00 00       	nop
- 82a:	e1 99       	sbic	0x1c, 1	; 28
- 82c:	f8 cf       	rjmp	.-16     	; 0x81e <READ_FROM_EEPROM+0x4>
+ 6d6:	e1 9b       	sbis	0x1c, 1	; 28
+ 6d8:	08 c0       	rjmp	.+16     	; 0x6ea <READ_FROM_EEPROM+0x14>
+ 6da:	ef ec       	ldi	r30, 0xCF	; 207
+ 6dc:	f7 e0       	ldi	r31, 0x07	; 7
+ 6de:	31 97       	sbiw	r30, 0x01	; 1
+ 6e0:	f1 f7       	brne	.-4      	; 0x6de <READ_FROM_EEPROM+0x8>
+ 6e2:	00 c0       	rjmp	.+0      	; 0x6e4 <READ_FROM_EEPROM+0xe>
+ 6e4:	00 00       	nop
+ 6e6:	e1 99       	sbic	0x1c, 1	; 28
+ 6e8:	f8 cf       	rjmp	.-16     	; 0x6da <READ_FROM_EEPROM+0x4>
 	_delay_ms(1);
 	
 	EEARH = address&0xFF00;
- 82e:	1f ba       	out	0x1f, r1	; 31
+ 6ea:	1f ba       	out	0x1f, r1	; 31
 	EEARL = address&0x00FF;
- 830:	8e bb       	out	0x1e, r24	; 30
+ 6ec:	8e bb       	out	0x1e, r24	; 30
 	EECR = (1<<EERE);
- 832:	81 e0       	ldi	r24, 0x01	; 1
- 834:	8c bb       	out	0x1c, r24	; 28
+ 6ee:	81 e0       	ldi	r24, 0x01	; 1
+ 6f0:	8c bb       	out	0x1c, r24	; 28
 	return EEDR;
- 836:	8d b3       	in	r24, 0x1d	; 29
+ 6f2:	8d b3       	in	r24, 0x1d	; 29
 }
- 838:	08 95       	ret
+ 6f4:	08 95       	ret
 
-0000083a <SAVE_TO_EEPROM>:
+000006f6 <SAVE_TO_EEPROM>:
 
 // writes a byte to eeprom at address
 void SAVE_TO_EEPROM(unsigned short address, char data){
 	while((EECR & (1<<EEWE)) == 2)
- 83a:	e1 9b       	sbis	0x1c, 1	; 28
- 83c:	08 c0       	rjmp	.+16     	; 0x84e <SAVE_TO_EEPROM+0x14>
- 83e:	ef ec       	ldi	r30, 0xCF	; 207
- 840:	f7 e0       	ldi	r31, 0x07	; 7
- 842:	31 97       	sbiw	r30, 0x01	; 1
- 844:	f1 f7       	brne	.-4      	; 0x842 <SAVE_TO_EEPROM+0x8>
- 846:	00 c0       	rjmp	.+0      	; 0x848 <SAVE_TO_EEPROM+0xe>
- 848:	00 00       	nop
- 84a:	e1 99       	sbic	0x1c, 1	; 28
- 84c:	f8 cf       	rjmp	.-16     	; 0x83e <SAVE_TO_EEPROM+0x4>
+ 6f6:	e1 9b       	sbis	0x1c, 1	; 28
+ 6f8:	08 c0       	rjmp	.+16     	; 0x70a <SAVE_TO_EEPROM+0x14>
+ 6fa:	ef ec       	ldi	r30, 0xCF	; 207
+ 6fc:	f7 e0       	ldi	r31, 0x07	; 7
+ 6fe:	31 97       	sbiw	r30, 0x01	; 1
+ 700:	f1 f7       	brne	.-4      	; 0x6fe <SAVE_TO_EEPROM+0x8>
+ 702:	00 c0       	rjmp	.+0      	; 0x704 <SAVE_TO_EEPROM+0xe>
+ 704:	00 00       	nop
+ 706:	e1 99       	sbic	0x1c, 1	; 28
+ 708:	f8 cf       	rjmp	.-16     	; 0x6fa <SAVE_TO_EEPROM+0x4>
 	_delay_ms(1);
 	
 	EEARH = address&0xFF00;
- 84e:	1f ba       	out	0x1f, r1	; 31
+ 70a:	1f ba       	out	0x1f, r1	; 31
 	EEARL = address&0x00FF;
- 850:	8e bb       	out	0x1e, r24	; 30
+ 70c:	8e bb       	out	0x1e, r24	; 30
 	
 	EEDR = data;
- 852:	6d bb       	out	0x1d, r22	; 29
+ 70e:	6d bb       	out	0x1d, r22	; 29
 	EECR = (1<<EEMWE);
- 854:	84 e0       	ldi	r24, 0x04	; 4
- 856:	8c bb       	out	0x1c, r24	; 28
+ 710:	84 e0       	ldi	r24, 0x04	; 4
+ 712:	8c bb       	out	0x1c, r24	; 28
 	EECR = (1<<EEWE);
- 858:	82 e0       	ldi	r24, 0x02	; 2
- 85a:	8c bb       	out	0x1c, r24	; 28
- 85c:	08 95       	ret
+ 714:	82 e0       	ldi	r24, 0x02	; 2
+ 716:	8c bb       	out	0x1c, r24	; 28
+ 718:	08 95       	ret
 
-0000085e <PROMPT_USER_WD>:
+0000071a <PROMPT_USER_WD>:
 }
 
 // prompts the user to setup timeout and watchdog timers
 void PROMPT_USER_WD(){
- 85e:	0f 93       	push	r16
- 860:	1f 93       	push	r17
- 862:	cf 93       	push	r28
- 864:	df 93       	push	r29
+ 71a:	0f 93       	push	r16
+ 71c:	1f 93       	push	r17
+ 71e:	cf 93       	push	r28
+ 720:	df 93       	push	r29
 	unsigned short timer = 0;
 	
 	saved = READ_FROM_EEPROM(0x00); // read whether already setup on eeprom or not
- 866:	80 e0       	ldi	r24, 0x00	; 0
- 868:	90 e0       	ldi	r25, 0x00	; 0
- 86a:	d7 df       	rcall	.-82     	; 0x81a <READ_FROM_EEPROM>
- 86c:	80 93 c7 0f 	sts	0x0FC7, r24	; 0x800fc7 <saved>
+ 722:	80 e0       	ldi	r24, 0x00	; 0
+ 724:	90 e0       	ldi	r25, 0x00	; 0
+ 726:	d7 df       	rcall	.-82     	; 0x6d6 <READ_FROM_EEPROM>
+ 728:	80 93 c7 0f 	sts	0x0FC7, r24	; 0x800fc7 <saved>
 	wdSaved = saved;
- 870:	80 93 c5 0f 	sts	0x0FC5, r24	; 0x800fc5 <wdSaved>
- 874:	d1 e0       	ldi	r29, 0x01	; 1
- 876:	c0 e0       	ldi	r28, 0x00	; 0
+ 72c:	80 93 c5 0f 	sts	0x0FC5, r24	; 0x800fc5 <wdSaved>
+ 730:	d1 e0       	ldi	r29, 0x01	; 1
+ 732:	c0 e0       	ldi	r28, 0x00	; 0
 	EECR = (1<<EEWE);
 }
 
 // prompts the user to setup timeout and watchdog timers
 void PROMPT_USER_WD(){
 	unsigned short timer = 0;
- 878:	00 e0       	ldi	r16, 0x00	; 0
- 87a:	10 e0       	ldi	r17, 0x00	; 0
- 87c:	02 c0       	rjmp	.+4      	; 0x882 <PROMPT_USER_WD+0x24>
- 87e:	cf 5f       	subi	r28, 0xFF	; 255
- 880:	df 5f       	subi	r29, 0xFF	; 255
+ 734:	00 e0       	ldi	r16, 0x00	; 0
+ 736:	10 e0       	ldi	r17, 0x00	; 0
+ 738:	02 c0       	rjmp	.+4      	; 0x73e <PROMPT_USER_WD+0x24>
+ 73a:	cf 5f       	subi	r28, 0xFF	; 255
+ 73c:	df 5f       	subi	r29, 0xFF	; 255
 	saved = READ_FROM_EEPROM(0x00); // read whether already setup on eeprom or not
 	wdSaved = saved;
 	
 	// reads previous timer
 	for(char i = 0; i < 2; i++){
 		timer |= READ_FROM_EEPROM(0x01 + i);
- 882:	8c 2f       	mov	r24, r28
- 884:	90 e0       	ldi	r25, 0x00	; 0
- 886:	01 96       	adiw	r24, 0x01	; 1
- 888:	c8 df       	rcall	.-112    	; 0x81a <READ_FROM_EEPROM>
- 88a:	08 2b       	or	r16, r24
+ 73e:	8c 2f       	mov	r24, r28
+ 740:	90 e0       	ldi	r25, 0x00	; 0
+ 742:	01 96       	adiw	r24, 0x01	; 1
+ 744:	c8 df       	rcall	.-112    	; 0x6d6 <READ_FROM_EEPROM>
+ 746:	08 2b       	or	r16, r24
 		if(i == 0)
- 88c:	c1 11       	cpse	r28, r1
- 88e:	03 c0       	rjmp	.+6      	; 0x896 <PROMPT_USER_WD+0x38>
+ 748:	c1 11       	cpse	r28, r1
+ 74a:	03 c0       	rjmp	.+6      	; 0x752 <PROMPT_USER_WD+0x38>
 			timer = timer<<8;
- 890:	10 2f       	mov	r17, r16
- 892:	00 27       	eor	r16, r16
- 894:	f4 cf       	rjmp	.-24     	; 0x87e <PROMPT_USER_WD+0x20>
+ 74c:	10 2f       	mov	r17, r16
+ 74e:	00 27       	eor	r16, r16
+ 750:	f4 cf       	rjmp	.-24     	; 0x73a <PROMPT_USER_WD+0x20>
 	
 	saved = READ_FROM_EEPROM(0x00); // read whether already setup on eeprom or not
 	wdSaved = saved;
 	
 	// reads previous timer
 	for(char i = 0; i < 2; i++){
- 896:	d2 30       	cpi	r29, 0x02	; 2
- 898:	90 f3       	brcs	.-28     	; 0x87e <PROMPT_USER_WD+0x20>
+ 752:	d2 30       	cpi	r29, 0x02	; 2
+ 754:	90 f3       	brcs	.-28     	; 0x73a <PROMPT_USER_WD+0x20>
 		timer |= READ_FROM_EEPROM(0x01 + i);
 		if(i == 0)
 			timer = timer<<8;
 	}
 	
 	watchdogSetting = READ_FROM_EEPROM(0x02);
- 89a:	82 e0       	ldi	r24, 0x02	; 2
- 89c:	90 e0       	ldi	r25, 0x00	; 0
- 89e:	bd df       	rcall	.-134    	; 0x81a <READ_FROM_EEPROM>
- 8a0:	80 93 c6 0f 	sts	0x0FC6, r24	; 0x800fc6 <watchdogSetting>
+ 756:	82 e0       	ldi	r24, 0x02	; 2
+ 758:	90 e0       	ldi	r25, 0x00	; 0
+ 75a:	bd df       	rcall	.-134    	; 0x6d6 <READ_FROM_EEPROM>
+ 75c:	80 93 c6 0f 	sts	0x0FC6, r24	; 0x800fc6 <watchdogSetting>
 	
 	if(saved){ // if not saved
- 8a4:	80 91 c7 0f 	lds	r24, 0x0FC7	; 0x800fc7 <saved>
- 8a8:	88 23       	and	r24, r24
+ 760:	80 91 c7 0f 	lds	r24, 0x0FC7	; 0x800fc7 <saved>
+ 764:	88 23       	and	r24, r24
 		USER_TRANSMIT_START("Please enter the timeout duration wanted in (0-8)s (0 to disable): ");
- 8aa:	61 f0       	breq	.+24     	; 0x8c4 <PROMPT_USER_WD+0x66>
- 8ac:	84 e9       	ldi	r24, 0x94	; 148
- 8ae:	91 e0       	ldi	r25, 0x01	; 1
- 8b0:	ca dd       	rcall	.-1132   	; 0x446 <USER_TRANSMIT_START>
+ 766:	61 f0       	breq	.+24     	; 0x780 <PROMPT_USER_WD+0x66>
+ 768:	8b e7       	ldi	r24, 0x7B	; 123
+ 76a:	91 e0       	ldi	r25, 0x01	; 1
+ 76c:	6c de       	rcall	.-808    	; 0x446 <USER_TRANSMIT_START>
 		timeOutCount = 0;
- 8b2:	10 92 3a 02 	sts	0x023A, r1	; 0x80023a <timeOutCount+0x1>
- 8b6:	10 92 39 02 	sts	0x0239, r1	; 0x800239 <timeOutCount>
+ 76e:	10 92 3a 02 	sts	0x023A, r1	; 0x80023a <timeOutCount+0x1>
+ 772:	10 92 39 02 	sts	0x0239, r1	; 0x800239 <timeOutCount>
 		}else{ // if saved, use previous read counter timer
 		timeOutCount = timer;
 	}
 	
 	while(saved){ // waits until user inputs and sets up timers
- 8ba:	80 91 c7 0f 	lds	r24, 0x0FC7	; 0x800fc7 <saved>
- 8be:	81 11       	cpse	r24, r1
- 8c0:	06 c0       	rjmp	.+12     	; 0x8ce <PROMPT_USER_WD+0x70>
- 8c2:	0d c0       	rjmp	.+26     	; 0x8de <PROMPT_USER_WD+0x80>
+ 776:	80 91 c7 0f 	lds	r24, 0x0FC7	; 0x800fc7 <saved>
+ 77a:	81 11       	cpse	r24, r1
+ 77c:	06 c0       	rjmp	.+12     	; 0x78a <PROMPT_USER_WD+0x70>
+ 77e:	0d c0       	rjmp	.+26     	; 0x79a <PROMPT_USER_WD+0x80>
 	
 	if(saved){ // if not saved
 		USER_TRANSMIT_START("Please enter the timeout duration wanted in (0-8)s (0 to disable): ");
 		timeOutCount = 0;
 		}else{ // if saved, use previous read counter timer
 		timeOutCount = timer;
- 8c4:	10 93 3a 02 	sts	0x023A, r17	; 0x80023a <timeOutCount+0x1>
- 8c8:	00 93 39 02 	sts	0x0239, r16	; 0x800239 <timeOutCount>
- 8cc:	08 c0       	rjmp	.+16     	; 0x8de <PROMPT_USER_WD+0x80>
+ 780:	10 93 3a 02 	sts	0x023A, r17	; 0x80023a <timeOutCount+0x1>
+ 784:	00 93 39 02 	sts	0x0239, r16	; 0x800239 <timeOutCount>
+ 788:	08 c0       	rjmp	.+16     	; 0x79a <PROMPT_USER_WD+0x80>
 	}
 	
 	while(saved){ // waits until user inputs and sets up timers
 		sleep_enable(); // arm sleep mode
- 8ce:	85 b7       	in	r24, 0x35	; 53
- 8d0:	80 62       	ori	r24, 0x20	; 32
- 8d2:	85 bf       	out	0x35, r24	; 53
+ 78a:	85 b7       	in	r24, 0x35	; 53
+ 78c:	80 62       	ori	r24, 0x20	; 32
+ 78e:	85 bf       	out	0x35, r24	; 53
 		sleep_cpu(); // put CPU to sleep
- 8d4:	88 95       	sleep
+ 790:	88 95       	sleep
 		timeOutCount = 0;
 		}else{ // if saved, use previous read counter timer
 		timeOutCount = timer;
 	}
 	
 	while(saved){ // waits until user inputs and sets up timers
- 8d6:	80 91 c7 0f 	lds	r24, 0x0FC7	; 0x800fc7 <saved>
- 8da:	81 11       	cpse	r24, r1
- 8dc:	f8 cf       	rjmp	.-16     	; 0x8ce <PROMPT_USER_WD+0x70>
+ 792:	80 91 c7 0f 	lds	r24, 0x0FC7	; 0x800fc7 <saved>
+ 796:	81 11       	cpse	r24, r1
+ 798:	f8 cf       	rjmp	.-16     	; 0x78a <PROMPT_USER_WD+0x70>
 		sleep_enable(); // arm sleep mode
 		sleep_cpu(); // put CPU to sleep
 	}
 	
 	if(wdSaved){ // if not saved
- 8de:	80 91 c5 0f 	lds	r24, 0x0FC5	; 0x800fc5 <wdSaved>
- 8e2:	88 23       	and	r24, r24
-		USER_TRANSMIT_START("Please enter the watchdog timer duration wanted in (0-9)s (0 to disable): ");
- 8e4:	79 f0       	breq	.+30     	; 0x904 <PROMPT_USER_WD+0xa6>
- 8e6:	88 ed       	ldi	r24, 0xD8	; 216
- 8e8:	91 e0       	ldi	r25, 0x01	; 1
- 8ea:	ad dd       	rcall	.-1190   	; 0x446 <USER_TRANSMIT_START>
+ 79a:	80 91 c5 0f 	lds	r24, 0x0FC5	; 0x800fc5 <wdSaved>
+ 79e:	88 23       	and	r24, r24
+		USER_TRANSMIT_START("Please enter the watchdog timer duration wanted in (0-8)s (0 to disable): ");
+ 7a0:	79 f0       	breq	.+30     	; 0x7c0 <PROMPT_USER_WD+0xa6>
+ 7a2:	8f eb       	ldi	r24, 0xBF	; 191
+ 7a4:	91 e0       	ldi	r25, 0x01	; 1
+ 7a6:	4f de       	rcall	.-866    	; 0x446 <USER_TRANSMIT_START>
 	}
 	
 	while(wdSaved){ // waits until user inputs and sets up timers
- 8ec:	80 91 c5 0f 	lds	r24, 0x0FC5	; 0x800fc5 <wdSaved>
- 8f0:	88 23       	and	r24, r24
- 8f2:	41 f0       	breq	.+16     	; 0x904 <PROMPT_USER_WD+0xa6>
+ 7a8:	80 91 c5 0f 	lds	r24, 0x0FC5	; 0x800fc5 <wdSaved>
+ 7ac:	88 23       	and	r24, r24
+ 7ae:	41 f0       	breq	.+16     	; 0x7c0 <PROMPT_USER_WD+0xa6>
 		sleep_enable(); // arm sleep mode
- 8f4:	85 b7       	in	r24, 0x35	; 53
- 8f6:	80 62       	ori	r24, 0x20	; 32
- 8f8:	85 bf       	out	0x35, r24	; 53
+ 7b0:	85 b7       	in	r24, 0x35	; 53
+ 7b2:	80 62       	ori	r24, 0x20	; 32
+ 7b4:	85 bf       	out	0x35, r24	; 53
 		sleep_cpu(); // put CPU to sleep
- 8fa:	88 95       	sleep
+ 7b6:	88 95       	sleep
 	
 	if(wdSaved){ // if not saved
-		USER_TRANSMIT_START("Please enter the watchdog timer duration wanted in (0-9)s (0 to disable): ");
+		USER_TRANSMIT_START("Please enter the watchdog timer duration wanted in (0-8)s (0 to disable): ");
 	}
 	
 	while(wdSaved){ // waits until user inputs and sets up timers
- 8fc:	80 91 c5 0f 	lds	r24, 0x0FC5	; 0x800fc5 <wdSaved>
- 900:	81 11       	cpse	r24, r1
+ 7b8:	80 91 c5 0f 	lds	r24, 0x0FC5	; 0x800fc5 <wdSaved>
+ 7bc:	81 11       	cpse	r24, r1
 		sleep_enable(); // arm sleep mode
 		sleep_cpu(); // put CPU to sleep
 	}
 	
 	// saves settings to eeprom
 	USER_TRANSMIT_START("Saving settings");
- 902:	f8 cf       	rjmp	.-16     	; 0x8f4 <PROMPT_USER_WD+0x96>
- 904:	83 e2       	ldi	r24, 0x23	; 35
- 906:	92 e0       	ldi	r25, 0x02	; 2
+ 7be:	f8 cf       	rjmp	.-16     	; 0x7b0 <PROMPT_USER_WD+0x96>
+ 7c0:	8a e0       	ldi	r24, 0x0A	; 10
+ 7c2:	92 e0       	ldi	r25, 0x02	; 2
 	// writing saved and timer settings
-	SAVE_TO_EEPROM(0x00, 0x01);
- 908:	9e dd       	rcall	.-1220   	; 0x446 <USER_TRANSMIT_START>
- 90a:	61 e0       	ldi	r22, 0x01	; 1
- 90c:	80 e0       	ldi	r24, 0x00	; 0
- 90e:	90 e0       	ldi	r25, 0x00	; 0
+	SAVE_TO_EEPROM(0x00, 0x00);
+ 7c4:	40 de       	rcall	.-896    	; 0x446 <USER_TRANSMIT_START>
+ 7c6:	60 e0       	ldi	r22, 0x00	; 0
+ 7c8:	80 e0       	ldi	r24, 0x00	; 0
+ 7ca:	90 e0       	ldi	r25, 0x00	; 0
 	SAVE_TO_EEPROM(0x01, (timeOutCount&0xFF00)>>8);
- 910:	94 df       	rcall	.-216    	; 0x83a <SAVE_TO_EEPROM>
- 912:	60 91 3a 02 	lds	r22, 0x023A	; 0x80023a <timeOutCount+0x1>
- 916:	81 e0       	ldi	r24, 0x01	; 1
- 918:	90 e0       	ldi	r25, 0x00	; 0
+ 7cc:	94 df       	rcall	.-216    	; 0x6f6 <SAVE_TO_EEPROM>
+ 7ce:	60 91 3a 02 	lds	r22, 0x023A	; 0x80023a <timeOutCount+0x1>
+ 7d2:	81 e0       	ldi	r24, 0x01	; 1
+ 7d4:	90 e0       	ldi	r25, 0x00	; 0
 	SAVE_TO_EEPROM(0x02, (timeOutCount&0x00FF));
- 91a:	8f df       	rcall	.-226    	; 0x83a <SAVE_TO_EEPROM>
- 91c:	60 91 39 02 	lds	r22, 0x0239	; 0x800239 <timeOutCount>
- 920:	82 e0       	ldi	r24, 0x02	; 2
- 922:	90 e0       	ldi	r25, 0x00	; 0
+ 7d6:	8f df       	rcall	.-226    	; 0x6f6 <SAVE_TO_EEPROM>
+ 7d8:	60 91 39 02 	lds	r22, 0x0239	; 0x800239 <timeOutCount>
+ 7dc:	82 e0       	ldi	r24, 0x02	; 2
+ 7de:	90 e0       	ldi	r25, 0x00	; 0
 	SAVE_TO_EEPROM(0x03, watchdogSetting);
- 924:	8a df       	rcall	.-236    	; 0x83a <SAVE_TO_EEPROM>
- 926:	60 91 c6 0f 	lds	r22, 0x0FC6	; 0x800fc6 <watchdogSetting>
- 92a:	83 e0       	ldi	r24, 0x03	; 3
- 92c:	90 e0       	ldi	r25, 0x00	; 0
- 92e:	85 df       	rcall	.-246    	; 0x83a <SAVE_TO_EEPROM>
+ 7e0:	8a df       	rcall	.-236    	; 0x6f6 <SAVE_TO_EEPROM>
+ 7e2:	60 91 c6 0f 	lds	r22, 0x0FC6	; 0x800fc6 <watchdogSetting>
+ 7e6:	83 e0       	ldi	r24, 0x03	; 3
+ 7e8:	90 e0       	ldi	r25, 0x00	; 0
+ 7ea:	85 df       	rcall	.-246    	; 0x6f6 <SAVE_TO_EEPROM>
 	timeOutCount = 65536 - timeOutCount;
- 930:	80 91 39 02 	lds	r24, 0x0239	; 0x800239 <timeOutCount>
- 934:	90 91 3a 02 	lds	r25, 0x023A	; 0x80023a <timeOutCount+0x1>
- 938:	91 95       	neg	r25
- 93a:	81 95       	neg	r24
- 93c:	91 09       	sbc	r25, r1
- 93e:	90 93 3a 02 	sts	0x023A, r25	; 0x80023a <timeOutCount+0x1>
- 942:	80 93 39 02 	sts	0x0239, r24	; 0x800239 <timeOutCount>
+ 7ec:	80 91 39 02 	lds	r24, 0x0239	; 0x800239 <timeOutCount>
+ 7f0:	90 91 3a 02 	lds	r25, 0x023A	; 0x80023a <timeOutCount+0x1>
+ 7f4:	91 95       	neg	r25
+ 7f6:	81 95       	neg	r24
+ 7f8:	91 09       	sbc	r25, r1
+ 7fa:	90 93 3a 02 	sts	0x023A, r25	; 0x80023a <timeOutCount+0x1>
+ 7fe:	80 93 39 02 	sts	0x0239, r24	; 0x800239 <timeOutCount>
 }
- 946:	df 91       	pop	r29
- 948:	cf 91       	pop	r28
- 94a:	1f 91       	pop	r17
- 94c:	0f 91       	pop	r16
- 94e:	08 95       	ret
+ 802:	df 91       	pop	r29
+ 804:	cf 91       	pop	r28
+ 806:	1f 91       	pop	r17
+ 808:	0f 91       	pop	r16
+ 80a:	08 95       	ret
 
-00000950 <enableWD>:
+0000080c <enableWD>:
 
 void enableWD(){
 	char sub;
 	switch (watchdogSetting){
- 950:	e0 91 c6 0f 	lds	r30, 0x0FC6	; 0x800fc6 <watchdogSetting>
- 954:	8e 2f       	mov	r24, r30
- 956:	90 e0       	ldi	r25, 0x00	; 0
- 958:	89 30       	cpi	r24, 0x09	; 9
- 95a:	91 05       	cpc	r25, r1
- 95c:	d8 f4       	brcc	.+54     	; 0x994 <enableWD+0x44>
- 95e:	fc 01       	movw	r30, r24
- 960:	ea 5b       	subi	r30, 0xBA	; 186
- 962:	ff 4f       	sbci	r31, 0xFF	; 255
- 964:	30 c0       	rjmp	.+96     	; 0x9c6 <__tablejump2__>
+ 80c:	e0 91 c6 0f 	lds	r30, 0x0FC6	; 0x800fc6 <watchdogSetting>
+ 810:	8e 2f       	mov	r24, r30
+ 812:	90 e0       	ldi	r25, 0x00	; 0
+ 814:	89 30       	cpi	r24, 0x09	; 9
+ 816:	91 05       	cpc	r25, r1
+ 818:	d8 f4       	brcc	.+54     	; 0x850 <enableWD+0x44>
+ 81a:	fc 01       	movw	r30, r24
+ 81c:	ea 5b       	subi	r30, 0xBA	; 186
+ 81e:	ff 4f       	sbci	r31, 0xFF	; 255
+ 820:	c7 c0       	rjmp	.+398    	; 0x9b0 <__tablejump2__>
 		break;
 		case 2:
 		sub = WDTO_30MS;
 		break;
 		case 3:
 		sub = WDTO_60MS;
- 966:	82 e0       	ldi	r24, 0x02	; 2
- 968:	07 c0       	rjmp	.+14     	; 0x978 <enableWD+0x28>
+ 822:	82 e0       	ldi	r24, 0x02	; 2
+ 824:	07 c0       	rjmp	.+14     	; 0x834 <enableWD+0x28>
 		break;
 		case 4:
 		sub = WDTO_120MS;
 		break;
 		case 5:
 		sub = WDTO_250MS;
- 96a:	84 e0       	ldi	r24, 0x04	; 4
+ 826:	84 e0       	ldi	r24, 0x04	; 4
 		break;
- 96c:	05 c0       	rjmp	.+10     	; 0x978 <enableWD+0x28>
+ 828:	05 c0       	rjmp	.+10     	; 0x834 <enableWD+0x28>
 		case 6:
 		sub = WDTO_500MS;
- 96e:	85 e0       	ldi	r24, 0x05	; 5
+ 82a:	85 e0       	ldi	r24, 0x05	; 5
 		break;
- 970:	03 c0       	rjmp	.+6      	; 0x978 <enableWD+0x28>
+ 82c:	03 c0       	rjmp	.+6      	; 0x834 <enableWD+0x28>
 		case 7:
 		sub = WDTO_1S;
- 972:	86 e0       	ldi	r24, 0x06	; 6
+ 82e:	86 e0       	ldi	r24, 0x06	; 6
 		break;
- 974:	01 c0       	rjmp	.+2      	; 0x978 <enableWD+0x28>
+ 830:	01 c0       	rjmp	.+2      	; 0x834 <enableWD+0x28>
 		case 8:
 		sub = WDTO_2S;
- 976:	87 e0       	ldi	r24, 0x07	; 7
+ 832:	87 e0       	ldi	r24, 0x07	; 7
 		break;
 	}
 	if(sub){
 		PORTB |= 0x01; // shows you that watchdog is armed
- 978:	c0 9a       	sbi	0x18, 0	; 24
+ 834:	c0 9a       	sbi	0x18, 0	; 24
 __attribute__ ((__always_inline__))
 void wdt_enable (const uint8_t value)
 {
 	if (_SFR_IO_REG_P (_WD_CONTROL_REG))
 	{
 		__asm__ __volatile__ (
- 97a:	88 60       	ori	r24, 0x08	; 8
- 97c:	98 e1       	ldi	r25, 0x18	; 24
- 97e:	0f b6       	in	r0, 0x3f	; 63
- 980:	f8 94       	cli
- 982:	a8 95       	wdr
- 984:	91 bd       	out	0x21, r25	; 33
- 986:	0f be       	out	0x3f, r0	; 63
- 988:	81 bd       	out	0x21, r24	; 33
+ 836:	88 60       	ori	r24, 0x08	; 8
+ 838:	98 e1       	ldi	r25, 0x18	; 24
+ 83a:	0f b6       	in	r0, 0x3f	; 63
+ 83c:	f8 94       	cli
+ 83e:	a8 95       	wdr
+ 840:	91 bd       	out	0x21, r25	; 33
+ 842:	0f be       	out	0x3f, r0	; 63
+ 844:	81 bd       	out	0x21, r24	; 33
 		wdt_enable(sub);
 	}
 }
- 98a:	08 95       	ret
+ 846:	08 95       	ret
 		break;
 		case 1:
 		sub = WDTO_15MS;
 		break;
 		case 2:
 		sub = WDTO_30MS;
- 98c:	81 e0       	ldi	r24, 0x01	; 1
- 98e:	f4 cf       	rjmp	.-24     	; 0x978 <enableWD+0x28>
+ 848:	81 e0       	ldi	r24, 0x01	; 1
+ 84a:	f4 cf       	rjmp	.-24     	; 0x834 <enableWD+0x28>
 		break;
 		case 3:
 		sub = WDTO_60MS;
 		break;
 		case 4:
 		sub = WDTO_120MS;
- 990:	83 e0       	ldi	r24, 0x03	; 3
- 992:	f2 cf       	rjmp	.-28     	; 0x978 <enableWD+0x28>
- 994:	08 95       	ret
+ 84c:	83 e0       	ldi	r24, 0x03	; 3
+ 84e:	f2 cf       	rjmp	.-28     	; 0x834 <enableWD+0x28>
+ 850:	08 95       	ret
 
-00000996 <main>:
+00000852 <startI>:
+	}
 }
 
-// main function
-int main(void) {
-	// reset eeprom, ONLY for demo purposes!
-	SAVE_TO_EEPROM(0xFF, 0x00);
- 996:	60 e0       	ldi	r22, 0x00	; 0
- 998:	8f ef       	ldi	r24, 0xFF	; 255
- 99a:	90 e0       	ldi	r25, 0x00	; 0
- 99c:	4e df       	rcall	.-356    	; 0x83a <SAVE_TO_EEPROM>
-	SAVE_TO_EEPROM(0x01, 0x00);
- 99e:	60 e0       	ldi	r22, 0x00	; 0
- 9a0:	81 e0       	ldi	r24, 0x01	; 1
- 9a2:	90 e0       	ldi	r25, 0x00	; 0
- 9a4:	4a df       	rcall	.-364    	; 0x83a <SAVE_TO_EEPROM>
-	SAVE_TO_EEPROM(0x02, 0x00);
- 9a6:	60 e0       	ldi	r22, 0x00	; 0
- 9a8:	82 e0       	ldi	r24, 0x02	; 2
- 9aa:	90 e0       	ldi	r25, 0x00	; 0
-	
+// reset and restart procedure
+void startI(void){
 	SYS_CONFIG(); // configure the system
- 9ac:	46 df       	rcall	.-372    	; 0x83a <SAVE_TO_EEPROM>
- 9ae:	5e dc       	rcall	.-1860   	; 0x26c <SYS_CONFIG>
+ 852:	0c dd       	rcall	.-1512   	; 0x26c <SYS_CONFIG>
 	PROMPT_USER_WD(); // prompt the user for timer setup if not setup
- 9b0:	56 df       	rcall	.-340    	; 0x85e <PROMPT_USER_WD>
+ 854:	62 df       	rcall	.-316    	; 0x71a <PROMPT_USER_WD>
 	INIT(); // initializes and reset the sensors
- 9b2:	d1 dd       	rcall	.-1118   	; 0x556 <INIT>
- 9b4:	80 e0       	ldi	r24, 0x00	; 0
+ 856:	7f de       	rcall	.-770    	; 0x556 <INIT>
 	USER_TRANSMIT_START("\rEnter choice (and period): 1-Mem Dump 2-Last Entry 3-Restart \0"); // prints menu
- 9b6:	91 e0       	ldi	r25, 0x01	; 1
- 9b8:	46 dd       	rcall	.-1396   	; 0x446 <USER_TRANSMIT_START>
- 9ba:	ca df       	rcall	.-108    	; 0x950 <enableWD>
- 9bc:	85 b7       	in	r24, 0x35	; 53
+ 858:	80 e0       	ldi	r24, 0x00	; 0
+ 85a:	91 e0       	ldi	r25, 0x01	; 1
+ 85c:	f4 cd       	rjmp	.-1048   	; 0x446 <USER_TRANSMIT_START>
+ 85e:	08 95       	ret
+
+00000860 <__vector_18>:
+ 860:	1f 92       	push	r1
+char user_input_buffer [5];
+char user_input_buffer_ptr = 0;
+
+// bluetooth rx
+// data register empty
+ISR(USART0_RX_vect) {
+ 862:	0f 92       	push	r0
+ 864:	0f b6       	in	r0, 0x3f	; 63
+ 866:	0f 92       	push	r0
+ 868:	11 24       	eor	r1, r1
+ 86a:	0b b6       	in	r0, 0x3b	; 59
+ 86c:	0f 92       	push	r0
+ 86e:	0f 93       	push	r16
+ 870:	1f 93       	push	r17
+ 872:	2f 93       	push	r18
+ 874:	3f 93       	push	r19
+ 876:	4f 93       	push	r20
+ 878:	5f 93       	push	r21
+ 87a:	6f 93       	push	r22
+ 87c:	7f 93       	push	r23
+ 87e:	8f 93       	push	r24
+ 880:	9f 93       	push	r25
+ 882:	af 93       	push	r26
+ 884:	bf 93       	push	r27
+ 886:	ef 93       	push	r30
+ 888:	ff 93       	push	r31
+	sleep_disable(); // disable sleep once an interrupt wakes CPU up
+ 88a:	85 b7       	in	r24, 0x35	; 53
+ 88c:	8f 7d       	andi	r24, 0xDF	; 223
+ 88e:	85 bf       	out	0x35, r24	; 53
 	
+	// reset wd timer
+	wdt_reset();
+ 890:	a8 95       	wdr
+	
+	// read one byte from the usart register and roll the buffer pointer
+	user_input_buffer[user_input_buffer_ptr++] = UDR0;
+ 892:	a0 91 38 02 	lds	r26, 0x0238	; 0x800238 <user_input_buffer_ptr>
+ 896:	e1 e0       	ldi	r30, 0x01	; 1
+ 898:	ea 0f       	add	r30, r26
+ 89a:	e0 93 38 02 	sts	0x0238, r30	; 0x800238 <user_input_buffer_ptr>
+ 89e:	8c b1       	in	r24, 0x0c	; 12
+ 8a0:	b0 e0       	ldi	r27, 0x00	; 0
+ 8a2:	af 5b       	subi	r26, 0xBF	; 191
+ 8a4:	bd 4f       	sbci	r27, 0xFD	; 253
+ 8a6:	8c 93       	st	X, r24
+	// if the read byte is a '.' command is issued
+	if (user_input_buffer[user_input_buffer_ptr - 1] == '.') {
+ 8a8:	f0 e0       	ldi	r31, 0x00	; 0
+ 8aa:	e0 5c       	subi	r30, 0xC0	; 192
+ 8ac:	fd 4f       	sbci	r31, 0xFD	; 253
+ 8ae:	80 81       	ld	r24, Z
+ 8b0:	8e 32       	cpi	r24, 0x2E	; 46
+ 8b2:	09 f0       	breq	.+2      	; 0x8b6 <__vector_18+0x56>
+ 8b4:	61 c0       	rjmp	.+194    	; 0x978 <__vector_18+0x118>
+		// checks if timeout and wd timers are setup, if not, it expects them to be the first inputs by the user
+		if(saved){
+ 8b6:	80 91 c7 0f 	lds	r24, 0x0FC7	; 0x800fc7 <saved>
+ 8ba:	88 23       	and	r24, r24
+ 8bc:	91 f1       	breq	.+100    	; 0x922 <__vector_18+0xc2>
+			// checks the validity of user input
+			if(user_input_buffer[0] < '9' && user_input_buffer[0] >= '0'){
+ 8be:	80 91 41 02 	lds	r24, 0x0241	; 0x800241 <user_input_buffer>
+ 8c2:	80 53       	subi	r24, 0x30	; 48
+ 8c4:	89 30       	cpi	r24, 0x09	; 9
+ 8c6:	08 f0       	brcs	.+2      	; 0x8ca <__vector_18+0x6a>
+ 8c8:	55 c0       	rjmp	.+170    	; 0x974 <__vector_18+0x114>
+				// notify user, calculate the timer counter and set saved
+				USER_TRANSMIT_START("RECEIVED");
+ 8ca:	8a e1       	ldi	r24, 0x1A	; 26
+ 8cc:	92 e0       	ldi	r25, 0x02	; 2
+ 8ce:	bb dd       	rcall	.-1162   	; 0x446 <USER_TRANSMIT_START>
+				timeOutCount = (user_input_buffer[0] - '0') * 8 * 1000000 / 1024;
+ 8d0:	a0 91 41 02 	lds	r26, 0x0241	; 0x800241 <user_input_buffer>
+ 8d4:	b0 e0       	ldi	r27, 0x00	; 0
+ 8d6:	d0 97       	sbiw	r26, 0x30	; 48
+ 8d8:	aa 0f       	add	r26, r26
+ 8da:	bb 1f       	adc	r27, r27
+ 8dc:	aa 0f       	add	r26, r26
+ 8de:	bb 1f       	adc	r27, r27
+ 8e0:	aa 0f       	add	r26, r26
+ 8e2:	bb 1f       	adc	r27, r27
+ 8e4:	20 e4       	ldi	r18, 0x40	; 64
+ 8e6:	32 e4       	ldi	r19, 0x42	; 66
+ 8e8:	4f e0       	ldi	r20, 0x0F	; 15
+ 8ea:	50 e0       	ldi	r21, 0x00	; 0
+ 8ec:	6a d0       	rcall	.+212    	; 0x9c2 <__mulshisi3>
+ 8ee:	8b 01       	movw	r16, r22
+ 8f0:	9c 01       	movw	r18, r24
+ 8f2:	99 23       	and	r25, r25
+ 8f4:	24 f4       	brge	.+8      	; 0x8fe <__vector_18+0x9e>
+ 8f6:	01 50       	subi	r16, 0x01	; 1
+ 8f8:	1c 4f       	sbci	r17, 0xFC	; 252
+ 8fa:	2f 4f       	sbci	r18, 0xFF	; 255
+ 8fc:	3f 4f       	sbci	r19, 0xFF	; 255
+ 8fe:	d9 01       	movw	r26, r18
+ 900:	c8 01       	movw	r24, r16
+ 902:	07 2e       	mov	r0, r23
+ 904:	7a e0       	ldi	r23, 0x0A	; 10
+ 906:	b5 95       	asr	r27
+ 908:	a7 95       	ror	r26
+ 90a:	97 95       	ror	r25
+ 90c:	87 95       	ror	r24
+ 90e:	7a 95       	dec	r23
+ 910:	d1 f7       	brne	.-12     	; 0x906 <__vector_18+0xa6>
+ 912:	70 2d       	mov	r23, r0
+ 914:	90 93 3a 02 	sts	0x023A, r25	; 0x80023a <timeOutCount+0x1>
+ 918:	80 93 39 02 	sts	0x0239, r24	; 0x800239 <timeOutCount>
+				saved = 0;
+ 91c:	10 92 c7 0f 	sts	0x0FC7, r1	; 0x800fc7 <saved>
+ 920:	29 c0       	rjmp	.+82     	; 0x974 <__vector_18+0x114>
+			}
+		}
+		else if(wdSaved){ // expects wd setup second// checks the validity of user input
+ 922:	80 91 c5 0f 	lds	r24, 0x0FC5	; 0x800fc5 <wdSaved>
+ 926:	88 23       	and	r24, r24
+ 928:	81 f0       	breq	.+32     	; 0x94a <__vector_18+0xea>
+			if(user_input_buffer[0] < '9' && user_input_buffer[0] >= '0'){
+ 92a:	80 91 41 02 	lds	r24, 0x0241	; 0x800241 <user_input_buffer>
+ 92e:	80 53       	subi	r24, 0x30	; 48
+ 930:	89 30       	cpi	r24, 0x09	; 9
+ 932:	00 f5       	brcc	.+64     	; 0x974 <__vector_18+0x114>
+				// notify user, calculate the timer counter and set saved
+				USER_TRANSMIT_START("RECEIVED");
+ 934:	8a e1       	ldi	r24, 0x1A	; 26
+ 936:	92 e0       	ldi	r25, 0x02	; 2
+ 938:	86 dd       	rcall	.-1268   	; 0x446 <USER_TRANSMIT_START>
+				watchdogSetting = user_input_buffer[0] - '0';
+ 93a:	80 91 41 02 	lds	r24, 0x0241	; 0x800241 <user_input_buffer>
+ 93e:	80 53       	subi	r24, 0x30	; 48
+ 940:	80 93 c6 0f 	sts	0x0FC6, r24	; 0x800fc6 <watchdogSetting>
+				wdSaved = 0;
+ 944:	10 92 c5 0f 	sts	0x0FC5, r1	; 0x800fc5 <wdSaved>
+ 948:	15 c0       	rjmp	.+42     	; 0x974 <__vector_18+0x114>
+			}
+		}
+		else{ // normal operation command
+			char number = user_input_buffer[0];
+			switch (number){
+ 94a:	80 91 41 02 	lds	r24, 0x0241	; 0x800241 <user_input_buffer>
+ 94e:	82 33       	cpi	r24, 0x32	; 50
+ 950:	41 f0       	breq	.+16     	; 0x962 <__vector_18+0x102>
+ 952:	83 33       	cpi	r24, 0x33	; 51
+ 954:	51 f0       	breq	.+20     	; 0x96a <__vector_18+0x10a>
+ 956:	81 33       	cpi	r24, 0x31	; 49
+				// mem dump
+				case '1':
+				sei(); // interrupts are reenabled since service readout relies on them
+ 958:	51 f4       	brne	.+20     	; 0x96e <__vector_18+0x10e>
+				SERVICE_READOUT(0);
+ 95a:	78 94       	sei
+ 95c:	80 e0       	ldi	r24, 0x00	; 0
+				break;
+ 95e:	9b dd       	rcall	.-1226   	; 0x496 <SERVICE_READOUT>
+				// last entry
+				case '2':
+				sei(); // interrupts are reenabled since service readout relies on them
+				SERVICE_READOUT(1);
+ 960:	09 c0       	rjmp	.+18     	; 0x974 <__vector_18+0x114>
+ 962:	78 94       	sei
+ 964:	81 e0       	ldi	r24, 0x01	; 1
+				break;
+				// reset
+				case '3':
+				startI();
+ 966:	97 dd       	rcall	.-1234   	; 0x496 <SERVICE_READOUT>
+ 968:	05 c0       	rjmp	.+10     	; 0x974 <__vector_18+0x114>
+				break;
+ 96a:	73 df       	rcall	.-282    	; 0x852 <startI>
+				// unknown command
+				default:
+				USER_TRANSMIT_START("Invalid command");
+ 96c:	03 c0       	rjmp	.+6      	; 0x974 <__vector_18+0x114>
+ 96e:	83 e2       	ldi	r24, 0x23	; 35
+ 970:	92 e0       	ldi	r25, 0x02	; 2
+ 972:	69 dd       	rcall	.-1326   	; 0x446 <USER_TRANSMIT_START>
+				break;
+			}
+		}
+		// reset pointer to 0
+		user_input_buffer_ptr = 0;
+ 974:	10 92 38 02 	sts	0x0238, r1	; 0x800238 <user_input_buffer_ptr>
+	}
+}
+ 978:	ff 91       	pop	r31
+ 97a:	ef 91       	pop	r30
+ 97c:	bf 91       	pop	r27
+ 97e:	af 91       	pop	r26
+ 980:	9f 91       	pop	r25
+ 982:	8f 91       	pop	r24
+ 984:	7f 91       	pop	r23
+ 986:	6f 91       	pop	r22
+ 988:	5f 91       	pop	r21
+ 98a:	4f 91       	pop	r20
+ 98c:	3f 91       	pop	r19
+ 98e:	2f 91       	pop	r18
+ 990:	1f 91       	pop	r17
+ 992:	0f 91       	pop	r16
+ 994:	0f 90       	pop	r0
+ 996:	0b be       	out	0x3b, r0	; 59
+ 998:	0f 90       	pop	r0
+ 99a:	0f be       	out	0x3f, r0	; 63
+ 99c:	0f 90       	pop	r0
+ 99e:	1f 90       	pop	r1
+ 9a0:	18 95       	reti
+
+000009a2 <main>:
+	// reset eeprom, ONLY for demo purposes!
+	/*SAVE_TO_EEPROM(0x00, 0xFF);
+	SAVE_TO_EEPROM(0x01, 0x00);
+	SAVE_TO_EEPROM(0x02, 0x00);*/
+	
+	startI();
+ 9a2:	57 df       	rcall	.-338    	; 0x852 <startI>
+	
+	enableWD(); // enables watchdog timer if setup
+ 9a4:	33 df       	rcall	.-410    	; 0x80c <enableWD>
+ 9a6:	85 b7       	in	r24, 0x35	; 53
 	while(1){ // waits for user or sensor interrupts
-		enableWD(); // enables watchdog timer if setup
- 9be:	80 62       	ori	r24, 0x20	; 32
- 9c0:	85 bf       	out	0x35, r24	; 53
 		sleep_enable(); // arm sleep mode
- 9c2:	88 95       	sleep
- 9c4:	fa cf       	rjmp	.-12     	; 0x9ba <main+0x24>
-
-000009c6 <__tablejump2__>:
- 9c6:	ee 0f       	add	r30, r30
+ 9a8:	80 62       	ori	r24, 0x20	; 32
+ 9aa:	85 bf       	out	0x35, r24	; 53
+ 9ac:	88 95       	sleep
 		sleep_cpu(); // put CPU to sleep
- 9c8:	ff 1f       	adc	r31, r31
- 9ca:	00 24       	eor	r0, r0
- 9cc:	00 1c       	adc	r0, r0
- 9ce:	0b be       	out	0x3b, r0	; 59
- 9d0:	07 90       	elpm	r0, Z+
- 9d2:	f6 91       	elpm	r31, Z
- 9d4:	e0 2d       	mov	r30, r0
- 9d6:	09 94       	ijmp
+ 9ae:	fb cf       	rjmp	.-10     	; 0x9a6 <main+0x4>
 
-000009d8 <__mulshisi3>:
- 9d8:	b7 ff       	sbrs	r27, 7
- 9da:	04 c0       	rjmp	.+8      	; 0x9e4 <__muluhisi3>
+000009b0 <__tablejump2__>:
+ 9b0:	ee 0f       	add	r30, r30
+ 9b2:	ff 1f       	adc	r31, r31
+ 9b4:	00 24       	eor	r0, r0
+ 9b6:	00 1c       	adc	r0, r0
+ 9b8:	0b be       	out	0x3b, r0	; 59
+ 9ba:	07 90       	elpm	r0, Z+
+ 9bc:	f6 91       	elpm	r31, Z
+ 9be:	e0 2d       	mov	r30, r0
+ 9c0:	09 94       	ijmp
 
-000009dc <__mulohisi3>:
- 9dc:	03 d0       	rcall	.+6      	; 0x9e4 <__muluhisi3>
- 9de:	82 1b       	sub	r24, r18
- 9e0:	93 0b       	sbc	r25, r19
- 9e2:	08 95       	ret
+000009c2 <__mulshisi3>:
+ 9c2:	b7 ff       	sbrs	r27, 7
+ 9c4:	04 c0       	rjmp	.+8      	; 0x9ce <__muluhisi3>
 
-000009e4 <__muluhisi3>:
- 9e4:	09 d0       	rcall	.+18     	; 0x9f8 <__umulhisi3>
- 9e6:	a5 9f       	mul	r26, r21
- 9e8:	90 0d       	add	r25, r0
- 9ea:	b4 9f       	mul	r27, r20
- 9ec:	90 0d       	add	r25, r0
- 9ee:	a4 9f       	mul	r26, r20
- 9f0:	80 0d       	add	r24, r0
+000009c6 <__mulohisi3>:
+ 9c6:	03 d0       	rcall	.+6      	; 0x9ce <__muluhisi3>
+ 9c8:	82 1b       	sub	r24, r18
+ 9ca:	93 0b       	sbc	r25, r19
+ 9cc:	08 95       	ret
+
+000009ce <__muluhisi3>:
+ 9ce:	09 d0       	rcall	.+18     	; 0x9e2 <__umulhisi3>
+ 9d0:	a5 9f       	mul	r26, r21
+ 9d2:	90 0d       	add	r25, r0
+ 9d4:	b4 9f       	mul	r27, r20
+ 9d6:	90 0d       	add	r25, r0
+ 9d8:	a4 9f       	mul	r26, r20
+ 9da:	80 0d       	add	r24, r0
+ 9dc:	91 1d       	adc	r25, r1
+ 9de:	11 24       	eor	r1, r1
+ 9e0:	08 95       	ret
+
+000009e2 <__umulhisi3>:
+ 9e2:	a2 9f       	mul	r26, r18
+ 9e4:	b0 01       	movw	r22, r0
+ 9e6:	b3 9f       	mul	r27, r19
+ 9e8:	c0 01       	movw	r24, r0
+ 9ea:	a3 9f       	mul	r26, r19
+ 9ec:	70 0d       	add	r23, r0
+ 9ee:	81 1d       	adc	r24, r1
+ 9f0:	11 24       	eor	r1, r1
  9f2:	91 1d       	adc	r25, r1
- 9f4:	11 24       	eor	r1, r1
- 9f6:	08 95       	ret
+ 9f4:	b2 9f       	mul	r27, r18
+ 9f6:	70 0d       	add	r23, r0
+ 9f8:	81 1d       	adc	r24, r1
+ 9fa:	11 24       	eor	r1, r1
+ 9fc:	91 1d       	adc	r25, r1
+ 9fe:	08 95       	ret
 
-000009f8 <__umulhisi3>:
- 9f8:	a2 9f       	mul	r26, r18
- 9fa:	b0 01       	movw	r22, r0
- 9fc:	b3 9f       	mul	r27, r19
- 9fe:	c0 01       	movw	r24, r0
- a00:	a3 9f       	mul	r26, r19
- a02:	70 0d       	add	r23, r0
- a04:	81 1d       	adc	r24, r1
- a06:	11 24       	eor	r1, r1
- a08:	91 1d       	adc	r25, r1
- a0a:	b2 9f       	mul	r27, r18
- a0c:	70 0d       	add	r23, r0
- a0e:	81 1d       	adc	r24, r1
- a10:	11 24       	eor	r1, r1
- a12:	91 1d       	adc	r25, r1
- a14:	08 95       	ret
+00000a00 <strcpy>:
+ a00:	fb 01       	movw	r30, r22
+ a02:	dc 01       	movw	r26, r24
+ a04:	01 90       	ld	r0, Z+
+ a06:	0d 92       	st	X+, r0
+ a08:	00 20       	and	r0, r0
+ a0a:	e1 f7       	brne	.-8      	; 0xa04 <strcpy+0x4>
+ a0c:	08 95       	ret
 
-00000a16 <strcpy>:
- a16:	fb 01       	movw	r30, r22
- a18:	dc 01       	movw	r26, r24
- a1a:	01 90       	ld	r0, Z+
- a1c:	0d 92       	st	X+, r0
- a1e:	00 20       	and	r0, r0
- a20:	e1 f7       	brne	.-8      	; 0xa1a <strcpy+0x4>
- a22:	08 95       	ret
+00000a0e <_exit>:
+ a0e:	f8 94       	cli
 
-00000a24 <_exit>:
- a24:	f8 94       	cli
-
-00000a26 <__stop_program>:
- a26:	ff cf       	rjmp	.-2      	; 0xa26 <__stop_program>
+00000a10 <__stop_program>:
+ a10:	ff cf       	rjmp	.-2      	; 0xa10 <__stop_program>
